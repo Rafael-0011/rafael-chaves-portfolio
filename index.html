@@ -3,1079 +3,444 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rafael Chaves — Desenvolvedor Full Stack</title>
+<title>Rafael Chaves — Backend Java Developer</title>
+<meta name="description" content="Portfólio de Rafael Chaves, Desenvolvedor Backend Java/Spring Boot. Arquitetura, segurança e multi-tenancy para sistemas B2B e setor público.">
+
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Geist Mono via Vercel CDN -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('https://cdn.jsdelivr.net/npm/geist@1.3.0/dist/fonts/geist-mono/GeistMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('https://cdn.jsdelivr.net/npm/geist@1.3.0/dist/fonts/geist-mono/GeistMono-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('https://cdn.jsdelivr.net/npm/geist@1.3.0/dist/fonts/geist-mono/GeistMono-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
-  :root {
-    --bg: #0a0a0a;
-    --surface: #111111;
-    --surface-2: #1a1a1a;
-    --border: rgba(255,255,255,0.08);
-    --border-hover: rgba(255,255,255,0.18);
-    --text: #f0ede8;
-    --text-muted: #6b6b6b;
-    --text-secondary: #a0a0a0;
-    --accent: #4ade80;
-    --accent-dim: rgba(74, 222, 128, 0.12);
-    --accent-border: rgba(74, 222, 128, 0.3);
-    --mono: 'Space Mono', monospace;
-    --sans: 'Space Grotesk', sans-serif;
-  }
+:root {
+  --bg: #000000;
+  --card: #111111;
+  --card-border: #222222;
+  --blue: #38bdf8;
+  --green: #22c55e;
+  --red: #ef4444;
+}
 
-  html { scroll-behavior: smooth; }
+* {
+  font-family: 'Geist Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+}
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    font-size: 16px;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
+body {
+  background-color: var(--bg);
+  background-image: radial-gradient(#222222 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: #e5e5e5;
+}
 
-  /* ── cursor ── */
-  .cursor {
-    position: fixed;
-    width: 8px; height: 8px;
-    background: var(--accent);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%,-50%);
-    transition: transform 0.1s, width 0.2s, height 0.2s, opacity 0.2s;
-    mix-blend-mode: difference;
-  }
-  .cursor-ring {
-    position: fixed;
-    width: 36px; height: 36px;
-    border: 1px solid rgba(74,222,128,0.4);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9998;
-    transform: translate(-50%,-50%);
-    transition: left 0.12s ease, top 0.12s ease, width 0.2s, height 0.2s, opacity 0.2s;
-  }
+::selection {
+  background-color: var(--blue);
+  color: #000;
+}
 
-  /* ── nav ── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    padding: 1.5rem 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.3s, background 0.3s, backdrop-filter 0.3s;
-  }
-  nav.scrolled {
-    border-color: var(--border);
-    background: rgba(10,10,10,0.85);
-    backdrop-filter: blur(12px);
-  }
-  .nav-logo {
-    font-family: var(--mono);
-    font-size: 0.9rem;
-    color: var(--accent);
-    letter-spacing: 0.05em;
-    text-decoration: none;
-  }
-  .nav-links {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-  }
-  .nav-links a {
-    font-size: 0.82rem;
-    font-family: var(--mono);
-    color: var(--text-secondary);
-    text-decoration: none;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-    position: relative;
-  }
-  .nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -2px; left: 0; right: 100%;
-    height: 1px;
-    background: var(--accent);
-    transition: right 0.25s ease;
-  }
-  .nav-links a:hover { color: var(--text); }
-  .nav-links a:hover::after { right: 0; }
+.card-hover {
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+}
+.card-blue:hover {
+  border-color: var(--blue);
+  box-shadow: 0 0 24px -8px rgba(56, 189, 248, 0.35);
+}
+.card-green:hover {
+  border-color: var(--green);
+  box-shadow: 0 0 24px -8px rgba(34, 197, 94, 0.35);
+}
+.card-red:hover {
+  border-color: var(--red);
+  box-shadow: 0 0 24px -8px rgba(239, 68, 68, 0.35);
+}
 
-  /* ── hero ── */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 8rem 3rem 4rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-grid {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(74,222,128,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(74,222,128,0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
-    mask-image: radial-gradient(ellipse at 30% 50%, black 20%, transparent 70%);
-  }
-  .hero-label {
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    color: var(--accent);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-  .hero-label::before {
-    content: '';
-    display: inline-block;
-    width: 32px; height: 1px;
-    background: var(--accent);
-  }
-  .hero-name {
-    font-size: clamp(3.5rem, 9vw, 8rem);
-    font-weight: 700;
-    line-height: 0.95;
-    letter-spacing: -0.03em;
-    margin-bottom: 1rem;
-  }
-  .hero-name .line-2 {
-    color: transparent;
-    -webkit-text-stroke: 1px rgba(240,237,232,0.25);
-  }
-  .hero-title {
-    font-size: clamp(1rem, 2.2vw, 1.35rem);
-    color: var(--text-secondary);
-    font-weight: 300;
-    max-width: 540px;
-    margin-bottom: 3rem;
-    line-height: 1.7;
-  }
-  .hero-title strong {
-    color: var(--text);
-    font-weight: 500;
-  }
-  .hero-cta {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.75rem;
-    border-radius: 2px;
-    font-family: var(--mono);
-    font-size: 0.8rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: all 0.2s;
-    cursor: pointer;
-    border: none;
-  }
-  .btn-primary {
-    background: var(--accent);
-    color: #0a0a0a;
-  }
-  .btn-primary:hover { background: #86efac; transform: translateY(-1px); }
-  .btn-ghost {
-    background: transparent;
-    color: var(--text-secondary);
-    border: 1px solid var(--border-hover);
-  }
-  .btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.35); }
+.btn-glow {
+  transition: box-shadow 0.25s ease, transform 0.2s ease;
+}
+.btn-glow:hover {
+  box-shadow: 0 0 30px -4px rgba(34, 197, 94, 0.6);
+  transform: translateY(-2px);
+}
 
-  .hero-scroll {
-    position: absolute;
-    bottom: 2.5rem;
-    left: 3rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-  .hero-scroll .line {
-    width: 40px; height: 1px;
-    background: var(--text-muted);
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-scroll .line::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--accent);
-    animation: scrollLine 2s ease infinite;
-  }
-  @keyframes scrollLine {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-  }
+.tag {
+  font-size: 0.75rem;
+  border: 1px solid var(--card-border);
+  background-color: #0a0a0a;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
 
-  /* ── sections ── */
-  section { padding: 7rem 3rem; }
-  .section-label {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    color: var(--accent);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-  .section-label::before {
-    content: attr(data-num);
-    color: var(--text-muted);
-  }
-  h2.section-title {
-    font-size: clamp(2rem, 4.5vw, 3.5rem);
-    font-weight: 700;
-    line-height: 1.1;
-    letter-spacing: -0.025em;
-    margin-bottom: 4rem;
-  }
+.blink {
+  animation: blink 1.1s step-end infinite;
+}
+@keyframes blink {
+  50% { opacity: 0; }
+}
 
-  /* ── about ── */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: start;
-  }
-  .about-text p {
-    color: var(--text-secondary);
-    line-height: 1.85;
-    margin-bottom: 1.25rem;
-    font-size: 1.05rem;
-  }
-  .about-text p strong { color: var(--text); font-weight: 500; }
-  .about-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  .stat {
-    background: var(--bg);
-    padding: 2rem 1.5rem;
-  }
-  .stat-num {
-    font-size: 2.8rem;
-    font-weight: 700;
-    color: var(--text);
-    line-height: 1;
-    margin-bottom: 0.35rem;
-    font-family: var(--mono);
-  }
-  .stat-num span { color: var(--accent); }
-  .stat-label {
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-family: var(--mono);
-  }
+.scanline-text {
+  letter-spacing: -0.02em;
+}
 
-  /* ── stack ── */
-  .stack-section { background: var(--surface); }
-  .stack-groups {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-  }
-  .stack-group-label {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-  }
-  .stack-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  .pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.45rem 0.95rem;
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    font-family: var(--mono);
-    font-size: 0.78rem;
-    color: var(--text-secondary);
-    background: var(--bg);
-    transition: all 0.2s;
-    cursor: default;
-  }
-  .pill:hover {
-    border-color: var(--accent-border);
-    color: var(--accent);
-    background: var(--accent-dim);
-  }
-  .pill-dot {
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    background: var(--accent);
-    opacity: 0.6;
-  }
+@media (prefers-reduced-motion: reduce) {
+  .card-hover, .btn-glow { transition: none !important; }
+  .blink { animation: none !important; }
+}
 
-  /* ── experiência ── */
-  .exp-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-  .exp-item {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 3rem;
-    padding: 2.5rem 0;
-    border-bottom: 1px solid var(--border);
-    transition: all 0.2s;
-    position: relative;
-  }
-  .exp-item::before {
-    content: '';
-    position: absolute;
-    left: -3rem; top: 0; bottom: 0;
-    width: 2px;
-    background: transparent;
-    transition: background 0.2s;
-  }
-  .exp-item:hover::before { background: var(--accent); }
-  .exp-meta {
-    padding-top: 0.15rem;
-  }
-  .exp-period {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    color: var(--text-muted);
-    letter-spacing: 0.05em;
-    margin-bottom: 0.35rem;
-  }
-  .exp-company {
-    font-size: 0.82rem;
-    color: var(--text-secondary);
-    font-weight: 400;
-  }
-  .exp-role {
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 0.25rem;
-    letter-spacing: -0.01em;
-  }
-  .exp-sub {
-    font-size: 0.82rem;
-    color: var(--accent);
-    font-family: var(--mono);
-    margin-bottom: 1rem;
-  }
-  .exp-desc {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  .exp-desc li {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    line-height: 1.65;
-    padding-left: 1.1rem;
-    position: relative;
-  }
-  .exp-desc li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: var(--accent);
-    font-size: 0.75rem;
-    top: 0.12em;
-  }
-  .exp-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-top: 1.25rem;
-  }
-  .exp-tag {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    color: var(--text-muted);
-    letter-spacing: 0.06em;
-    padding: 0.2rem 0.5rem;
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    text-transform: uppercase;
-  }
-
-  /* ── projetos ── */
-  .projects-section { background: var(--surface); }
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  .project-card {
-    background: var(--bg);
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    transition: background 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
-  .project-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--accent), transparent);
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-  .project-card:hover { background: var(--surface-2); }
-  .project-card:hover::before { opacity: 1; }
-  .project-num {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    letter-spacing: 0.08em;
-  }
-  .project-title {
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: var(--text);
-    letter-spacing: -0.01em;
-    line-height: 1.3;
-  }
-  .project-desc {
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-    line-height: 1.7;
-    flex: 1;
-  }
-  .project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-  .project-tag {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    color: var(--accent);
-    letter-spacing: 0.06em;
-    padding: 0.2rem 0.5rem;
-    border: 1px solid var(--accent-border);
-    border-radius: 2px;
-    text-transform: uppercase;
-    background: var(--accent-dim);
-  }
-  .project-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    color: var(--text-muted);
-    text-decoration: none;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-    margin-top: auto;
-  }
-  .project-link:hover { color: var(--accent); }
-  .project-link svg { width: 12px; height: 12px; transition: transform 0.2s; }
-  .project-link:hover svg { transform: translate(2px, -2px); }
-
-  /* ── contato ── */
-  .contact-inner {
-    max-width: 640px;
-  }
-  .contact-lead {
-    font-size: clamp(1.3rem, 3vw, 2rem);
-    font-weight: 600;
-    color: var(--text);
-    line-height: 1.4;
-    margin-bottom: 2.5rem;
-    letter-spacing: -0.02em;
-  }
-  .contact-lead .highlight {
-    color: var(--accent);
-    font-style: italic;
-    font-family: Georgia, serif;
-  }
-  .contact-links {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    overflow: hidden;
-    margin-bottom: 2rem;
-  }
-  .contact-link {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.1rem 1.5rem;
-    border-bottom: 1px solid var(--border);
-    text-decoration: none;
-    transition: background 0.2s;
-    group: true;
-  }
-  .contact-link:last-child { border-bottom: none; }
-  .contact-link:hover { background: var(--surface-2); }
-  .contact-link-left {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  .contact-icon {
-    width: 36px; height: 36px;
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--accent);
-    font-size: 0.9rem;
-    flex-shrink: 0;
-  }
-  .contact-label {
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    font-family: var(--mono);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    display: block;
-    margin-bottom: 0.1rem;
-  }
-  .contact-value {
-    font-size: 0.92rem;
-    color: var(--text);
-  }
-  .contact-arrow {
-    color: var(--text-muted);
-    font-size: 1rem;
-    transition: transform 0.2s, color 0.2s;
-  }
-  .contact-link:hover .contact-arrow { transform: translate(2px,-2px); color: var(--accent); }
-
-  /* ── footer ── */
-  footer {
-    padding: 2rem 3rem;
-    border-top: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .footer-copy {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    color: var(--text-muted);
-    letter-spacing: 0.06em;
-  }
-  .footer-copy span { color: var(--accent); }
-
-  /* ── fade-in animations ── */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .fade-in-delay-1 { transition-delay: 0.1s; }
-  .fade-in-delay-2 { transition-delay: 0.2s; }
-  .fade-in-delay-3 { transition-delay: 0.3s; }
-
-  /* ── divider ── */
-  .divider {
-    width: 100%;
-    height: 1px;
-    background: var(--border);
-  }
-
-  /* ── mobile ── */
-  @media (max-width: 768px) {
-    nav { padding: 1.25rem 1.5rem; }
-    .nav-links { gap: 1.25rem; }
-    .hero { padding: 7rem 1.5rem 3rem; }
-    section { padding: 5rem 1.5rem; }
-    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
-    .exp-meta { padding-top: 0; }
-    footer { flex-direction: column; gap: 1rem; text-align: center; padding: 1.5rem; }
-    .hero-scroll { left: 1.5rem; }
-  }
-  @media (max-width: 480px) {
-    .nav-links { display: none; }
-    .about-stats { grid-template-columns: 1fr 1fr; }
-  }
-
-  /* ── typing cursor on hero ── */
-  .type-cursor {
-    display: inline-block;
-    width: 3px;
-    height: 0.85em;
-    background: var(--accent);
-    margin-left: 4px;
-    vertical-align: middle;
-    animation: blink 1.1s step-end infinite;
-  }
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-  }
+html {
+  scroll-behavior: smooth;
+}
 </style>
 </head>
-<body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
+<body class="min-h-screen antialiased">
 
-<!-- NAV -->
-<nav id="nav">
-  <a href="#" class="nav-logo">RC.DEV</a>
-  <ul class="nav-links">
-    <li><a href="#sobre">Sobre</a></li>
-    <li><a href="#stack">Stack</a></li>
-    <li><a href="#experiencia">Experiência</a></li>
-    <li><a href="#projetos">Projetos</a></li>
-    <li><a href="#contato">Contato</a></li>
-  </ul>
-</nav>
+<!-- ============ HEADER / NAVBAR ============ -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm border-b border-[#1a1a1a]">
+  <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="#top" class="text-sm md:text-base tracking-tight text-white font-medium">
+      RAFAEL<span class="text-[#38bdf8]">.</span>CHAVES
+    </a>
+    <ul class="hidden md:flex items-center gap-8 text-sm text-neutral-400">
+      <li><a href="#sobre" class="hover:text-[#38bdf8] transition-colors">// sobre</a></li>
+      <li><a href="#projetos" class="hover:text-[#38bdf8] transition-colors">// projetos</a></li>
+      <li><a href="#stack" class="hover:text-[#38bdf8] transition-colors">// tecnologias</a></li>
+      <li><a href="#contato" class="hover:text-[#22c55e] transition-colors">// contato</a></li>
+    </ul>
+    <a href="#contato" class="md:hidden text-xs border border-[#222] rounded px-3 py-1.5 text-[#22c55e]">contato</a>
+  </nav>
+</header>
 
-<!-- HERO -->
-<section class="hero" id="inicio">
-  <div class="hero-grid"></div>
-  <div class="hero-label">Disponível para novos projetos</div>
-  <h1 class="hero-name">
-    <span class="line-1">RAFAEL</span><br>
-    <span class="line-2">CHAVES</span>
-  </h1>
-  <p class="hero-title">
-    Desenvolvedor <strong>Full Stack</strong> especializado em <strong>Java Backend</strong> e <strong>Angular</strong>.
-    Mais de 1 ano construindo sistemas reais para o setor público do Ceará —
-    de projetos do zero até manutenção de legados críticos.<span class="type-cursor"></span>
+<!-- ============ HERO ============ -->
+<section id="top" class="max-w-6xl mx-auto px-6 pt-40 pb-28 md:pt-48 md:pb-36">
+  <p class="text-[#22c55e] text-sm mb-6">
+    <span class="text-neutral-600">$</span> whoami --sem-formalidade <span class="blink text-[#22c55e]">_</span>
   </p>
-  <div class="hero-cta">
-    <a href="#projetos" class="btn btn-primary">Ver projetos</a>
-    <a href="#contato" class="btn btn-ghost">Entre em contato</a>
+
+  <h1 class="scanline-text text-3xl sm:text-4xl md:text-6xl font-medium leading-[1.15] max-w-4xl">
+    <span class="text-white">Fala aí! Sou o </span><span class="text-[#38bdf8]">Rafael</span><span class="text-white">.</span><br>
+    <span class="text-white">Construo o que acontece</span><br>
+    <span class="text-white">por trás das telas.</span>
+  </h1>
+
+  <p class="mt-8 text-neutral-400 text-sm md:text-base max-w-xl leading-relaxed">
+    Sou dev Backend Java — o famoso "por trás das telas" — e curto pegar
+    aquela regra de negócio complicada que ninguém quer explicar duas vezes
+    e transformar em código limpo, testado e que aguenta produção sem drama.
+  </p>
+
+  <div class="mt-10 flex flex-wrap items-center gap-4">
+    <a href="#contato"
+       class="btn-glow inline-flex items-center gap-2 bg-[#22c55e] text-black text-sm font-medium px-6 py-3 rounded-md hover:bg-[#16a34a]">
+      Ver LinkedIn
+      <span aria-hidden="true">→</span>
+    </a>
+    <a href="#"
+       class="inline-flex items-center gap-2 border border-[#222] text-neutral-300 text-sm px-6 py-3 rounded-md hover:border-[#38bdf8] hover:text-[#38bdf8] transition-colors">
+      Baixar Currículo
+    </a>
   </div>
-  <div class="hero-scroll">
-    <div class="line"></div>
-    Rolar para baixo
+
+  <div class="mt-14 flex flex-wrap gap-2">
+    <span class="tag text-[#38bdf8] px-3 py-1.5 rounded">Java 8 → 17</span>
+    <span class="tag text-[#38bdf8] px-3 py-1.5 rounded">Spring Boot</span>
+    <span class="tag text-[#38bdf8] px-3 py-1.5 rounded">PostgreSQL</span>
+    <span class="tag text-[#38bdf8] px-3 py-1.5 rounded">Kafka</span>
+    <span class="tag text-[#38bdf8] px-3 py-1.5 rounded">Docker</span>
   </div>
 </section>
 
-<!-- SOBRE -->
-<section id="sobre">
-  <div class="section-label" data-num="01">Sobre mim</div>
-  <h2 class="section-title fade-in">Entendo o problema<br>antes de escrever código.</h2>
-  <div class="about-grid">
-    <div class="about-text fade-in fade-in-delay-1">
+<!-- ============ SOBRE MIM ============ -->
+<section id="sobre" class="max-w-6xl mx-auto px-6 py-24 border-t border-[#1a1a1a]">
+  <p class="text-neutral-600 text-xs mb-3">01 // sobre-mim</p>
+  <h2 class="text-2xl md:text-3xl text-white font-medium mb-10">
+    <span class="text-[#38bdf8]">&lt;</span>sobre<span class="text-[#38bdf8]">/&gt;</span>
+  </h2>
+
+  <div class="grid md:grid-cols-3 gap-10">
+    <div class="md:col-span-2 space-y-5 text-neutral-300 text-sm md:text-[15px] leading-relaxed">
       <p>
-        Sou desenvolvedor backend Java com experiência em projetos reais para o setor público do Ceará. 
-        Atuo desde <strong>sistemas construídos do zero</strong> até manutenção de legados de missão crítica.
+        Sou cearense, movido a café e código limpo ☕ — e minha jornada com
+        backend começou resolvendo problema de gente de verdade: sistemas do
+        setor público do Ceará, como <span class="text-[#38bdf8]">SESA</span>
+        e <span class="text-[#38bdf8]">Ematerce</span>, onde bug não é só bug,
+        é gente esperando atendimento. Isso me ensinou cedo a levar
+        responsabilidade a sério sem perder a leveza no dia a dia.
       </p>
       <p>
-        Identifico vulnerabilidades antes da produção, proponho evoluções de arquitetura que 
-        <strong>reduzem retrabalho</strong> e entrego automações que eliminam processos manuais.
+        Curto muito resolver problema de forma inteligente — aquele momento
+        de achar a solução mais simples pra um negócio complicado é o que me
+        deixa mais animado no trabalho. E gosto de fazer isso em time: trocar
+        ideia, revisar PR dos outros, aprender junto.
       </p>
       <p>
-        Funciono bem tanto em times ágeis com PO quanto em alocações diretas no cliente. 
-        Gosto de entender o contexto de negócio, não apenas o requisito técnico.
+        No dia a dia trabalho com <span class="text-white">Java 8 ao 17</span>
+        e <span class="text-white">Spring Boot</span>, sempre de olho em três
+        coisas que levo a sério mesmo sendo tranquilo no trato: segurança de
+        dados, arquitetura multi-tenant e qualidade validada por pipeline de
+        CI/CD.
       </p>
-      <br>
-      <a href="mailto:rafaelchavesdev1@gmail.com" class="btn btn-ghost" style="display:inline-flex;">
-        Conversar sobre projetos →
-      </a>
+      <p class="text-neutral-500">
+        // resumindo: gente boa pra trabalhar junto, chato com qualidade de código.
+      </p>
     </div>
-    <div class="fade-in fade-in-delay-2">
-      <div class="about-stats">
-        <div class="stat">
-          <div class="stat-num">1<span>+</span></div>
-          <div class="stat-label">Ano de experiência</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">5<span>+</span></div>
-          <div class="stat-label">Sistemas entregues</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">15<span>+</span></div>
-          <div class="stat-label">Bugs críticos resolvidos</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">3<span>h</span></div>
-          <div class="stat-label">Economizadas por auditoria</div>
-        </div>
-      </div>
+
+    <div class="bg-[#111111] border border-[#222222] rounded-lg p-6 h-fit">
+      <p class="text-xs text-neutral-500 mb-4">foco.json</p>
+      <ul class="space-y-3 text-sm">
+        <li class="flex items-start gap-2">
+          <span class="text-[#38bdf8]">▸</span>
+          <span class="text-neutral-300">Arquitetura multi-tenant</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-[#ef4444]">▸</span>
+          <span class="text-neutral-300">Segurança & governança de dados</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-[#22c55e]">▸</span>
+          <span class="text-neutral-300">Automação de processos críticos</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-[#38bdf8]">▸</span>
+          <span class="text-neutral-300">CI/CD & qualidade contínua</span>
+        </li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- STACK -->
-<section id="stack" class="stack-section">
-  <div class="section-label" data-num="02">Tecnologias</div>
-  <h2 class="section-title fade-in">Stack técnico</h2>
-  <div class="stack-groups">
-    <div class="fade-in fade-in-delay-1">
-      <div class="stack-group-label">Backend</div>
-      <div class="stack-pills">
-        <span class="pill"><span class="pill-dot"></span>Java 17</span>
-        <span class="pill"><span class="pill-dot"></span>Spring Boot</span>
-        <span class="pill"><span class="pill-dot"></span>Spring Security</span>
-        <span class="pill"><span class="pill-dot"></span>JWT</span>
-        <span class="pill"><span class="pill-dot"></span>Keycloak</span>
-        <span class="pill"><span class="pill-dot"></span>Hibernate</span>
-        <span class="pill"><span class="pill-dot"></span>JUnit</span>
-        <span class="pill"><span class="pill-dot"></span>JSF 1.2</span>
-        <span class="pill"><span class="pill-dot"></span>JasperReports</span>
-        <span class="pill"><span class="pill-dot"></span>APIs REST</span>
-      </div>
-    </div>
-    <div class="fade-in fade-in-delay-2">
-      <div class="stack-group-label">Banco de dados & Mensageria</div>
-      <div class="stack-pills">
-        <span class="pill"><span class="pill-dot"></span>PostgreSQL</span>
-        <span class="pill"><span class="pill-dot"></span>Flyway</span>
-        <span class="pill"><span class="pill-dot"></span>Apache Kafka</span>
-        <span class="pill"><span class="pill-dot"></span>MinIO</span>
-      </div>
-    </div>
-    <div class="fade-in fade-in-delay-3">
-      <div class="stack-group-label">Frontend & Infra</div>
-      <div class="stack-pills">
-        <span class="pill"><span class="pill-dot"></span>Angular 19</span>
-        <span class="pill"><span class="pill-dot"></span>TypeScript</span>
-        <span class="pill"><span class="pill-dot"></span>RxJS</span>
-        <span class="pill"><span class="pill-dot"></span>HTML/CSS/JS</span>
-        <span class="pill"><span class="pill-dot"></span>Docker</span>
-        <span class="pill"><span class="pill-dot"></span>GitLab CI/CD</span>
-        <span class="pill"><span class="pill-dot"></span>SonarQube</span>
-        <span class="pill"><span class="pill-dot"></span>Swagger</span>
-        <span class="pill"><span class="pill-dot"></span>Nginx</span>
-        <span class="pill"><span class="pill-dot"></span>Git</span>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- ============ PROJETOS ============ -->
+<section id="projetos" class="max-w-6xl mx-auto px-6 py-24 border-t border-[#1a1a1a]">
+  <p class="text-neutral-600 text-xs mb-3">02 // projetos</p>
+  <h2 class="text-2xl md:text-3xl text-white font-medium mb-4">
+    <span class="text-[#38bdf8]">&lt;</span>projetos<span class="text-[#38bdf8]">/&gt;</span>
+  </h2>
+  <p class="text-neutral-500 text-sm mb-12 max-w-2xl">
+    Três casos reais — cada um com um desafio de negócio, a solução técnica
+    aplicada e o impacto gerado.
+  </p>
 
-<!-- EXPERIÊNCIA -->
-<section id="experiencia">
-  <div class="section-label" data-num="03">Carreira</div>
-  <h2 class="section-title fade-in">Experiência profissional</h2>
-  <div class="exp-list">
+  <div class="grid md:grid-cols-3 gap-6">
 
-    <div class="exp-item fade-in">
-      <div class="exp-meta">
-        <div class="exp-period">Jul 2025 – Ago 2025</div>
-        <div class="exp-company">Colmeia → SESA</div>
+    <!-- CARD 1 — AZUL -->
+    <div class="card-hover card-blue bg-[#111111] border border-[#222222] rounded-lg p-6 flex flex-col">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="w-2 h-2 rounded-full bg-[#38bdf8]"></span>
+        <p class="text-xs text-neutral-500">saas-b2b</p>
       </div>
-      <div>
-        <div class="exp-role">Desenvolvedor FullStack Pleno</div>
-        <div class="exp-sub">Secretaria da Saúde do Ceará · Alocação</div>
-        <ul class="exp-desc">
-          <li>Mantive e evoluí dois sistemas legados de missão crítica (JSF 1.2, Java 8) utilizados por equipes administrativas e hospitalares do Estado.</li>
-          <li>Corrigi mais de 15 inconsistências em módulos de cadastro e auditoria, resultando em ~10% de redução nas reclamações de usuários.</li>
-          <li>Desenvolvi página web para auditoria interna com geração de relatórios via JasperReports, economizando ~3 horas por ciclo de auditoria.</li>
-          <li>Integrei controle de versão de banco via Flyway, eliminando inconsistências de schema entre ambientes.</li>
-        </ul>
-        <div class="exp-tags">
-          <span class="exp-tag">Java 8</span>
-          <span class="exp-tag">JSF 1.2</span>
-          <span class="exp-tag">Spring Boot</span>
-          <span class="exp-tag">JasperReports</span>
-          <span class="exp-tag">Flyway</span>
-          <span class="exp-tag">PostgreSQL</span>
+
+      <h3 class="text-white font-medium mb-1">Plataforma Nida</h3>
+      <p class="text-neutral-500 text-xs mb-5">PDV Inteligente — SaaS B2B</p>
+
+      <div class="space-y-4 text-sm text-neutral-400 leading-relaxed flex-1">
+        <div>
+          <p class="text-[#38bdf8] text-xs mb-1">// desafio</p>
+          <p>PDV multi-cliente exigindo <span class="text-neutral-200">100% de disponibilidade de venda</span>, mesmo sob instabilidade ou queda total de conexão.</p>
+        </div>
+        <div>
+          <p class="text-[#38bdf8] text-xs mb-1">// solução</p>
+          <p>Implementação de arquitetura <span class="text-neutral-200">offline-first</span> em Spring Boot, com isolamento estrito de tenants via Hibernate + PostgreSQL e sincronização por mensageria assíncrona.</p>
+        </div>
+        <div>
+          <p class="text-[#38bdf8] text-xs mb-1">// resultado</p>
+          <p><span class="text-neutral-200">Zero downtime</span> percebido pelo cliente final em quedas de rede, com isolamento de dados validado entre múltiplos tenants em produção.</p>
         </div>
       </div>
-    </div>
 
-    <div class="exp-item fade-in">
-      <div class="exp-meta">
-        <div class="exp-period">Dez 2024 – Dez 2025</div>
-        <div class="exp-company">Colmeia Soluções em Tecnologia</div>
-      </div>
-      <div>
-        <div class="exp-role">Desenvolvedor Backend</div>
-        <div class="exp-sub">Projetos para setor público municipal</div>
-        <ul class="exp-desc">
-          <li>Desenvolvi o sistema de Diárias da Ematerce do zero até a produção, eliminando controle manual em planilhas: implementei fluxo completo de solicitação, aprovação por status, controle de contas orçamentárias e vinculação automática de portarias com Spring Boot, APIs REST e PostgreSQL.</li>
-          <li>Conduzi análise técnica do Resolva Já (marketplace white label), mapeei o sistema legado e propus ao tech lead a migração de categorias estáticas para dinâmicas com referência de imagens via MinIO — reduzindo acoplamento e viabilizando evolução independente do catálogo.</li>
-          <li>Evolui a modelagem do banco do Resolva Já, adicionei colunas para referência de imagens (MinIO) e desenhei estratégia de agendamento entre contratante e prestador com reuso de tabela existente, evitando retrabalho de migração.</li>
-          <li>Implementei módulos de marketplace agrícola (Página do Produtor e Avaliações de Produtos) com Spring Boot e APIs REST, entregando vitrine digital para produtores rurais dentro do prazo do sprint.</li>
-          <li>Identifiquei e corrigi vulnerabilidade crítica de vazamento de dados em arquitetura multi-tenancy, protegendo os dados de todos os clientes antes da exposição em produção.</li>
-          <li>Implementei segurança com Spring Security + JWT (login, validação de token e claims) e configurei Keycloak, apoiando integrações de validação para consumo de APIs externas.</li>
-          <li>Criei suíte de testes unitários com JUnit cobrindo fluxos críticos de aprovação e integrei SonarQube ao pipeline GitLab CI/CD, zerando regressões nos sprints seguintes.</li>
-          <li>Configurei ambientes Docker com paridade entre desenvolvimento e produção, reduzindo erros de ambiente nos deploys da equipe.</li>
-          <li>Organizei histórias e tasks no board junto ao PO, distribuindo atividades entre backend e frontend em sprints quinzenais.</li>
-        </ul>
-        <div class="exp-tags">
-          <span class="exp-tag">Java 17</span>
-          <span class="exp-tag">Spring Boot</span>
-          <span class="exp-tag">Spring Security</span>
-          <span class="exp-tag">JWT</span>
-          <span class="exp-tag">Keycloak</span>
-          <span class="exp-tag">Kafka</span>
-          <span class="exp-tag">MinIO</span>
-          <span class="exp-tag">Docker</span>
-          <span class="exp-tag">GitLab CI/CD</span>
-        </div>
+      <div class="flex flex-wrap gap-2 mt-6 pt-5 border-t border-[#1e1e1e]">
+        <span class="tag text-[#38bdf8] px-2.5 py-1 rounded">Java 17</span>
+        <span class="tag text-[#38bdf8] px-2.5 py-1 rounded">Spring Boot</span>
+        <span class="tag text-[#38bdf8] px-2.5 py-1 rounded">Multi-Tenancy</span>
       </div>
     </div>
 
-    <div class="exp-item fade-in">
-      <div class="exp-meta">
-        <div class="exp-period">2025 – 2026</div>
-        <div class="exp-company">Autônomo</div>
+    <!-- CARD 2 — VERDE -->
+    <div class="card-hover card-green bg-[#111111] border border-[#222222] rounded-lg p-6 flex flex-col">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="w-2 h-2 rounded-full bg-[#22c55e]"></span>
+        <p class="text-xs text-neutral-500">automação</p>
       </div>
-      <div>
-        <div class="exp-role">Desenvolvedor Web</div>
-        <div class="exp-sub">Freelance · Setor de educação online</div>
-        <ul class="exp-desc">
-          <li>Entreguei duas landing pages do zero até o deploy para clientes do setor de educação online.</li>
-          <li>Conduzi levantamento direto com clientes sobre identidade visual, garantindo alinhamento com o público-alvo.</li>
-          <li>Construí layouts responsivos com HTML, CSS e JavaScript puro, com foco em conversão e velocidade.</li>
-        </ul>
-        <div class="exp-tags">
-          <span class="exp-tag">HTML</span>
-          <span class="exp-tag">CSS</span>
-          <span class="exp-tag">JavaScript</span>
-          <span class="exp-tag">Deploy</span>
+
+      <h3 class="text-white font-medium mb-1">Sistema de Diárias</h3>
+      <p class="text-neutral-500 text-xs mb-5">Ematerce</p>
+
+      <div class="space-y-4 text-sm text-neutral-400 leading-relaxed flex-1">
+        <div>
+          <p class="text-[#22c55e] text-xs mb-1">// desafio</p>
+          <p>Controle de diárias e viagens 100% manual em planilhas — processo lento, sujeito a erro humano e sem rastreabilidade orçamentária.</p>
         </div>
+        <div>
+          <p class="text-[#22c55e] text-xs mb-1">// solução</p>
+          <p>Construção de fluxo automatizado de solicitação/aprovação com controle orçamentário integrado, sustentado por esteira de CI/CD com gates de qualidade via SonarQube.</p>
+        </div>
+        <div>
+          <p class="text-[#22c55e] text-xs mb-1">// resultado</p>
+          <p class="flex items-start gap-2"><span class="text-[#22c55e]">✓</span> <span><span class="text-neutral-200">Eliminação de 100%</span> dos processos manuais em planilha</span></p>
+          <p class="flex items-start gap-2"><span class="text-[#22c55e]">✓</span> <span><span class="text-neutral-200">Economia de ~3h por ciclo</span> de aprovação</span></p>
+          <p class="flex items-start gap-2"><span class="text-[#22c55e]">✓</span> <span><span class="text-neutral-200">Zero regressões</span> reportadas pós-deploy</span></p>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap gap-2 mt-6 pt-5 border-t border-[#1e1e1e]">
+        <span class="tag text-[#22c55e] px-2.5 py-1 rounded">CI/CD</span>
+        <span class="tag text-[#22c55e] px-2.5 py-1 rounded">SonarQube</span>
+        <span class="tag text-[#22c55e] px-2.5 py-1 rounded">JUnit</span>
+      </div>
+    </div>
+
+    <!-- CARD 3 — VERMELHO -->
+    <div class="card-hover card-red bg-[#111111] border border-[#222222] rounded-lg p-6 flex flex-col">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="w-2 h-2 rounded-full bg-[#ef4444]"></span>
+        <p class="text-xs text-neutral-500">segurança-crítica</p>
+      </div>
+
+      <h3 class="text-white font-medium mb-1">Segurança & Modernização</h3>
+      <p class="text-neutral-500 text-xs mb-5">SESA / Resolva Já</p>
+
+      <div class="space-y-4 text-sm text-neutral-400 leading-relaxed flex-1">
+        <div>
+          <p class="text-[#ef4444] text-xs mb-1">// desafio</p>
+          <p><span class="text-neutral-200">Vulnerabilidade crítica identificada</span>: vazamento de dados entre tenants por isolamento inadequado em arquitetura multi-tenant.</p>
+        </div>
+        <div>
+          <p class="text-[#ef4444] text-xs mb-1">// solução</p>
+          <p>Correção estrutural do isolamento na camada de persistência e implementação de autenticação robusta com Keycloak + JWT, seguindo Spring Security.</p>
+        </div>
+        <div>
+          <p class="text-[#ef4444] text-xs mb-1">// resultado</p>
+          <p class="flex items-start gap-2"><span class="text-[#ef4444]">⚠</span> <span><span class="text-neutral-200">Correção da vulnerabilidade antes da produção</span> — risco de exposição neutralizado</span></p>
+          <p class="flex items-start gap-2"><span class="text-[#ef4444]">⚠</span> <span><span class="text-neutral-200">Camada de autenticação modernizada</span> e 100% auditável</span></p>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap gap-2 mt-6 pt-5 border-t border-[#1e1e1e]">
+        <span class="tag text-[#ef4444] px-2.5 py-1 rounded">Keycloak</span>
+        <span class="tag text-[#ef4444] px-2.5 py-1 rounded">JWT</span>
+        <span class="tag text-[#ef4444] px-2.5 py-1 rounded">Spring Security</span>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- PROJETOS -->
-<section id="projetos" class="projects-section">
-  <div class="section-label" data-num="04">Trabalhos</div>
-  <h2 class="section-title fade-in">Projetos pessoais</h2>
-  <div class="projects-grid">
+<!-- ============ TECH STACK ============ -->
+<section id="stack" class="max-w-6xl mx-auto px-6 py-24 border-t border-[#1a1a1a]">
+  <p class="text-neutral-600 text-xs mb-3">03 // tecnologias</p>
+  <h2 class="text-2xl md:text-3xl text-white font-medium mb-12">
+    <span class="text-[#38bdf8]">&lt;</span>stack<span class="text-[#38bdf8]">/&gt;</span>
+  </h2>
 
-    <div class="project-card fade-in">
-      <div class="project-num">01</div>
-      <div class="project-title">Frontend para Gestão de Currículos</div>
-      <p class="project-desc">
-        SPA em Angular 19 com autenticação JWT, dashboards e gráficos para análise de candidatos. 
-        Pronto para integração com API REST Java/Spring Boot via Docker + Nginx. 
-        Demonstra capacidade Full Stack completa.
-      </p>
-      <div class="project-tags">
-        <span class="project-tag">Angular 19</span>
-        <span class="project-tag">TypeScript</span>
-        <span class="project-tag">JWT</span>
-        <span class="project-tag">Docker</span>
-        <span class="project-tag">Nginx</span>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
+
+    <div class="bg-[#111111] border border-[#222222] rounded-lg p-5">
+      <p class="text-xs text-neutral-500 mb-4">linguagens</p>
+      <div class="flex flex-col gap-2">
+        <span class="tag text-[#38bdf8] px-3 py-2 rounded text-center">[ Java 8 ]</span>
+        <span class="tag text-[#38bdf8] px-3 py-2 rounded text-center">[ Java 11 ]</span>
+        <span class="tag text-[#38bdf8] px-3 py-2 rounded text-center">[ Java 17 ]</span>
       </div>
-      <a href="https://github.com/Rafael-0011/front-curriculo" target="_blank" class="project-link">
-        Ver no GitHub
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-      </a>
     </div>
 
-    <div class="project-card fade-in fade-in-delay-1">
-      <div class="project-num">02</div>
-      <div class="project-title">Plataforma Nida — Gestão de RH & Onboarding</div>
-      <p class="project-desc">
-        Plataforma Full Stack para otimizar comunicação e fluxo de admissão entre recrutadores e colaboradores. 
-        APIs REST para vagas internas, agendamento de entrevistas, upload de documentos e transição automática de candidato para empregado.
-      </p>
-      <div class="project-tags">
-        <span class="project-tag">Java 17</span>
-        <span class="project-tag">Spring Boot</span>
-        <span class="project-tag">PostgreSQL</span>
-        <span class="project-tag">JWT</span>
-        <span class="project-tag">Angular</span>
+    <div class="bg-[#111111] border border-[#222222] rounded-lg p-5">
+      <p class="text-xs text-neutral-500 mb-4">frameworks</p>
+      <div class="flex flex-col gap-2">
+        <span class="tag text-[#38bdf8] px-3 py-2 rounded text-center">[ Spring Boot ]</span>
+        <span class="tag text-[#38bdf8] px-3 py-2 rounded text-center">[ Spring MVC ]</span>
+        <span class="tag text-[#38bdf8] px-3 py-2 rounded text-center">[ Hibernate/JPA ]</span>
       </div>
-      <a href="https://github.com/Rafael-0011/api-nida" target="_blank" class="project-link">
-        Ver no GitHub
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-      </a>
     </div>
 
-    <div class="project-card fade-in fade-in-delay-2">
-      <div class="project-num">03</div>
-      <div class="project-title">Sistema Inteligente de Frente de Caixa (PDV)</div>
-      <p class="project-desc">
-        Arquitetura de alta performance para redução do tempo de atendimento em supermercados. 
-        Integração assíncrona via Kafka para comunicação com operadoras de cartão e módulo fiscal 
-        com análise automatizada de impostos.
-      </p>
-      <div class="project-tags">
-        <span class="project-tag">Java</span>
-        <span class="project-tag">Spring Boot</span>
-        <span class="project-tag">Angular</span>
-        <span class="project-tag">Kafka</span>
-        <span class="project-tag">PostgreSQL</span>
+    <div class="bg-[#111111] border border-[#222222] rounded-lg p-5">
+      <p class="text-xs text-neutral-500 mb-4">segurança</p>
+      <div class="flex flex-col gap-2">
+        <span class="tag text-[#ef4444] px-3 py-2 rounded text-center">[ Spring Security ]</span>
+        <span class="tag text-[#ef4444] px-3 py-2 rounded text-center">[ JWT ]</span>
+        <span class="tag text-[#ef4444] px-3 py-2 rounded text-center">[ Keycloak ]</span>
       </div>
-      <span class="project-link" style="cursor:default; opacity:0.5;">Em desenvolvimento</span>
     </div>
 
-    <div class="project-card fade-in fade-in-delay-3">
-      <div class="project-num">04</div>
-      <div class="project-title">Plataforma de Gestão Jurídica (Legaltech)</div>
-      <p class="project-desc">
-        Solução para escritórios de advocacia com canal criptografado de comunicação processual, 
-        mitigação de fraudes, dashboards de acompanhamento e armazenamento seguro de documentos via MinIO/S3.
-      </p>
-      <div class="project-tags">
-        <span class="project-tag">Java 17</span>
-        <span class="project-tag">Spring Security</span>
-        <span class="project-tag">Angular</span>
-        <span class="project-tag">MinIO</span>
-        <span class="project-tag">PostgreSQL</span>
+    <div class="bg-[#111111] border border-[#222222] rounded-lg p-5">
+      <p class="text-xs text-neutral-500 mb-4">dados & mensageria</p>
+      <div class="flex flex-col gap-2">
+        <span class="tag text-[#38bdf8] px-3 py-2 rounded text-center">[ PostgreSQL ]</span>
+        <span class="tag text-[#38bdf8] px-3 py-2 rounded text-center">[ Multi-tenancy ]</span>
+        <span class="tag text-[#38bdf8] px-3 py-2 rounded text-center">[ Apache Kafka ]</span>
       </div>
-      <span class="project-link" style="cursor:default; opacity:0.5;">Em desenvolvimento</span>
+    </div>
+
+    <div class="bg-[#111111] border border-[#222222] rounded-lg p-5">
+      <p class="text-xs text-neutral-500 mb-4">devops & qualidade</p>
+      <div class="flex flex-col gap-2">
+        <span class="tag text-[#22c55e] px-3 py-2 rounded text-center">[ Docker ]</span>
+        <span class="tag text-[#22c55e] px-3 py-2 rounded text-center">[ GitLab CI/CD ]</span>
+        <span class="tag text-[#22c55e] px-3 py-2 rounded text-center">[ SonarQube ]</span>
+        <span class="tag text-[#22c55e] px-3 py-2 rounded text-center">[ JUnit ]</span>
+      </div>
     </div>
 
   </div>
 </section>
 
-<!-- CONTATO -->
-<section id="contato">
-  <div class="section-label" data-num="05">Contato</div>
-  <div class="contact-inner">
-    <p class="contact-lead fade-in">
-      Tem um projeto interessante? Vamos <span class="highlight">conversar</span> sobre como posso ajudar.
+<!-- ============ CONTATO / CTA / FOOTER ============ -->
+<footer id="contato" class="border-t border-[#1a1a1a]">
+  <div class="max-w-6xl mx-auto px-6 py-24 text-center">
+    <p class="text-neutral-600 text-xs mb-3">04 // contato</p>
+    <h2 class="text-2xl md:text-4xl text-white font-medium mb-4">
+      Bora conversar sobre a
+      <span class="text-[#38bdf8]">próxima linha de código</span>?
+    </h2>
+    <p class="text-neutral-500 text-sm mb-10 max-w-lg mx-auto">
+      Se você chegou até aqui, já viu como eu penso arquitetura, segurança
+      e entrega. Me chama.
     </p>
-    <div class="contact-links fade-in fade-in-delay-1">
-      <a href="mailto:rafaelchavesdev1@gmail.com" class="contact-link">
-        <div class="contact-link-left">
-          <div class="contact-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </div>
-          <div>
-            <span class="contact-label">E-mail</span>
-            <span class="contact-value">rafaelchavesdev1@gmail.com</span>
-          </div>
-        </div>
-        <span class="contact-arrow">↗</span>
+
+    <div class="flex flex-wrap justify-center gap-4 mb-16">
+      <a href="https://www.linkedin.com/in/rafaelchaves"
+         target="_blank" rel="noopener noreferrer"
+         class="btn-glow inline-flex items-center gap-2 bg-[#22c55e] text-black text-sm font-medium px-6 py-3 rounded-md hover:bg-[#16a34a]">
+        Falar no LinkedIn →
       </a>
-      <a href="https://www.linkedin.com/in/rafael-chaves-0a4a51248" target="_blank" class="contact-link">
-        <div class="contact-link-left">
-          <div class="contact-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          </div>
-          <div>
-            <span class="contact-label">LinkedIn</span>
-            <span class="contact-value">rafael-chaves-0a4a51248</span>
-          </div>
-        </div>
-        <span class="contact-arrow">↗</span>
-      </a>
-      <a href="https://github.com/Rafael-0011" target="_blank" class="contact-link">
-        <div class="contact-link-left">
-          <div class="contact-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-          </div>
-          <div>
-            <span class="contact-label">GitHub</span>
-            <span class="contact-value">Rafael-0011</span>
-          </div>
-        </div>
-        <span class="contact-arrow">↗</span>
-      </a>
-      <a href="tel:+5585992191471" class="contact-link">
-        <div class="contact-link-left">
-          <div class="contact-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.44 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.37a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2z"/></svg>
-          </div>
-          <div>
-            <span class="contact-label">Telefone</span>
-            <span class="contact-value">(85) 99219-1471</span>
-          </div>
-        </div>
-        <span class="contact-arrow">↗</span>
+      <a href="https://github.com/rafaelchaves"
+         target="_blank" rel="noopener noreferrer"
+         class="inline-flex items-center gap-2 border border-[#222] text-neutral-300 text-sm px-6 py-3 rounded-md hover:border-[#38bdf8] hover:text-[#38bdf8] transition-colors">
+        Ver código no GitHub
       </a>
     </div>
-  </div>
-</section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-copy">© 2026 Rafael Chaves — <span>rc.dev</span></div>
-  <div class="footer-copy">Feito com HTML, CSS & JS puro</div>
+    <div class="flex flex-wrap justify-center gap-8 text-sm text-neutral-500 border-t border-[#1a1a1a] pt-8">
+      <a href="mailto:rafael.chaves@email.com" class="hover:text-[#38bdf8] transition-colors">rafael.chaves@email.com</a>
+      <a href="https://www.linkedin.com/in/rafaelchaves" target="_blank" rel="noopener noreferrer" class="hover:text-[#38bdf8] transition-colors">linkedin.com/in/rafaelchaves</a>
+      <a href="https://github.com/rafaelchaves" target="_blank" rel="noopener noreferrer" class="hover:text-[#38bdf8] transition-colors">github.com/rafaelchaves</a>
+    </div>
+
+    <p class="text-neutral-700 text-xs mt-10">
+      // tempo de resposta médio: 24h
+    </p>
+  </div>
 </footer>
 
-<script>
-  // cursor
-  const cursor = document.getElementById('cursor');
-  const ring = document.getElementById('cursorRing');
-  let mx = 0, my = 0;
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    cursor.style.left = mx + 'px';
-    cursor.style.top = my + 'px';
-    ring.style.left = mx + 'px';
-    ring.style.top = my + 'px';
-  });
-  document.querySelectorAll('a, button, .pill').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cursor.style.width = '16px';
-      cursor.style.height = '16px';
-      ring.style.width = '52px';
-      ring.style.height = '52px';
-    });
-    el.addEventListener('mouseleave', () => {
-      cursor.style.width = '8px';
-      cursor.style.height = '8px';
-      ring.style.width = '36px';
-      ring.style.height = '36px';
-    });
-  });
-
-  // nav scroll
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
-  });
-
-  // fade-in observer
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-</script>
 </body>
 </html>
