@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rafael Chaves — Backend Java Developer</title>
-<meta name="description" content="Portfólio de Rafael Chaves, Desenvolvedor Backend Java/Spring Boot. Arquitetura, segurança e multi-tenancy para sistemas B2B e setor público.">
-
+<title>Rafael Chaves</title>
+<meta name="description" content="Portfólio de Rafael Chaves">
+<link rel="icon" type="image/svg+xml" href="mylogo.svg">
 <!-- Tailwind CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -125,11 +125,12 @@ html {
     </a>
     <ul class="hidden md:flex items-center gap-8 text-sm text-neutral-400">
       <li><a href="#sobre" class="hover:text-[#38bdf8] transition-colors">// sobre</a></li>
+      <li><a href="#experiencia" class="hover:text-[#ef4444] transition-colors">// experiência</a></li>
       <li><a href="#projetos" class="hover:text-[#38bdf8] transition-colors">// projetos</a></li>
-      <li><a href="#stack" class="hover:text-[#38bdf8] transition-colors">// tecnologias</a></li>
-      <li><a href="#contato" class="hover:text-[#22c55e] transition-colors">// contato</a></li>
+      <li><a href="#stack" class="hover:text-[#22c55e] transition-colors">// tecnologias</a></li>
+      <li><a href="#contato" class="hover:text-[#38bdf8] transition-colors">// contato</a></li>
     </ul>
-    <a href="#contato" class="md:hidden text-xs border border-[#222] rounded px-3 py-1.5 text-[#22c55e]">contato</a>
+    <a href="#contato" class="md:hidden text-xs border border-[#222] rounded px-3 py-1.5 text-[#38bdf8]">contato</a>
   </nav>
 </header>
 
@@ -142,7 +143,8 @@ html {
   <h1 class="scanline-text text-3xl sm:text-4xl md:text-6xl font-medium leading-[1.15] max-w-4xl">
     <span class="text-white">Fala aí! Sou o </span><span class="text-[#38bdf8]">Rafael</span><span class="text-white">.</span><br>
     <span class="text-white">Construo o que acontece</span><br>
-    <span class="text-white">por trás das telas.</span>
+    <span class="text-white">por trás das telas, com</span><br>
+    <span class="text-white">Backend Java & Spring Boot.</span>
   </h1>
 
   <p class="mt-8 text-neutral-400 text-sm md:text-base max-w-xl leading-relaxed">
@@ -152,23 +154,15 @@ html {
   </p>
 
   <div class="mt-10 flex flex-wrap items-center gap-4">
-    <a href="#contato"
+    <a href="https://www.linkedin.com/in/rafael-chaves-0a4a51248" target="_blank" rel="noopener noreferrer"
        class="btn-glow inline-flex items-center gap-2 bg-[#22c55e] text-black text-sm font-medium px-6 py-3 rounded-md hover:bg-[#16a34a]">
       Ver LinkedIn
       <span aria-hidden="true">→</span>
     </a>
-    <a href="#"
+    <a href="mailto:rafaelchavesdev1@gmail.com"
        class="inline-flex items-center gap-2 border border-[#222] text-neutral-300 text-sm px-6 py-3 rounded-md hover:border-[#38bdf8] hover:text-[#38bdf8] transition-colors">
-      Baixar Currículo
+      Falar por e-mail
     </a>
-  </div>
-
-  <div class="mt-14 flex flex-wrap gap-2">
-    <span class="tag text-[#38bdf8] px-3 py-1.5 rounded">Java 8 → 17</span>
-    <span class="tag text-[#38bdf8] px-3 py-1.5 rounded">Spring Boot</span>
-    <span class="tag text-[#38bdf8] px-3 py-1.5 rounded">PostgreSQL</span>
-    <span class="tag text-[#38bdf8] px-3 py-1.5 rounded">Kafka</span>
-    <span class="tag text-[#38bdf8] px-3 py-1.5 rounded">Docker</span>
   </div>
 </section>
 
@@ -231,126 +225,124 @@ html {
   </div>
 </section>
 
+<!-- ============ EXPERIÊNCIA ============ -->
+<section id="experiencia" class="max-w-6xl mx-auto px-6 py-24 border-t border-[#1a1a1a]">
+  <p class="text-neutral-600 text-xs mb-3">02 // experiência</p>
+  <h2 class="text-2xl md:text-3xl text-white font-medium mb-4">
+    <span class="text-[#ef4444]">&lt;</span>experiência<span class="text-[#ef4444]">/&gt;</span>
+  </h2>
+  <p class="text-neutral-500 text-sm mb-12 max-w-2xl">
+    Sistemas reais, entregues do zero ou evoluídos em produção, com foco em
+    backend, segurança e impacto para quem usa.
+  </p>
+
+  <div class="mt-12 border-l-2 border-[#ef4444] pl-6 max-w-4xl">
+    <div class="flex flex-wrap items-baseline justify-between gap-3">
+      <h3 class="text-white font-medium">Desenvolvedor Full Stack — Colmeia Soluções em Tecnologia</h3>
+      <span class="text-[#ef4444] text-xs">Dez/2024 – Dez/2025</span>
+    </div>
+    <p class="text-neutral-500 text-xs mt-1 mb-5">Alocado na SESA-CE a partir de Jul/2025</p>
+    <ul class="space-y-3 text-sm text-neutral-400 leading-relaxed">
+      <li><span class="text-[#ef4444]">▸</span> Desenvolvi sistemas Spring Boot e APIs REST do zero, incluindo o Sistema de Diárias da Ematerce.</li>
+      <li><span class="text-[#ef4444]">▸</span> Corrigi vulnerabilidade crítica de multi-tenancy e implementei Spring Security, JWT e Keycloak.</li>
+      <li><span class="text-[#ef4444]">▸</span> Mantive 2 sistemas legados críticos em Java 8/JSF, corrigindo 15+ inconsistências e reduzindo reclamações em cerca de 10%.</li>
+      <li><span class="text-[#ef4444]">▸</span> Criei testes com JUnit, pipelines GitLab CI/CD com SonarQube, relatórios JasperReports e versionamento com Flyway.</li>
+    </ul>
+  </div>
+</section>
+
 <!-- ============ PROJETOS ============ -->
 <section id="projetos" class="max-w-6xl mx-auto px-6 py-24 border-t border-[#1a1a1a]">
-  <p class="text-neutral-600 text-xs mb-3">02 // projetos</p>
+  <p class="text-[#38bdf8] text-xs mb-3">03 // projetos</p>
   <h2 class="text-2xl md:text-3xl text-white font-medium mb-4">
     <span class="text-[#38bdf8]">&lt;</span>projetos<span class="text-[#38bdf8]">/&gt;</span>
   </h2>
   <p class="text-neutral-500 text-sm mb-12 max-w-2xl">
-    Três casos reais — cada um com um desafio de negócio, a solução técnica
-    aplicada e o impacto gerado.
+    Estudos e aplicações que mostram minha prática com APIs, segurança,
+    persistência, armazenamento em nuvem e ferramentas de linha de comando.
   </p>
 
-  <div class="grid md:grid-cols-3 gap-6">
-
-    <!-- CARD 1 — AZUL -->
-    <div class="card-hover card-blue bg-[#111111] border border-[#222222] rounded-lg p-6 flex flex-col">
-      <div class="flex items-center gap-2 mb-4">
-        <span class="w-2 h-2 rounded-full bg-[#38bdf8]"></span>
-        <p class="text-xs text-neutral-500">saas-b2b</p>
-      </div>
-
-      <h3 class="text-white font-medium mb-1">Plataforma Nida</h3>
-      <p class="text-neutral-500 text-xs mb-5">PDV Inteligente — SaaS B2B</p>
-
-      <div class="space-y-4 text-sm text-neutral-400 leading-relaxed flex-1">
-        <div>
-          <p class="text-[#38bdf8] text-xs mb-1">// desafio</p>
-          <p>PDV multi-cliente exigindo <span class="text-neutral-200">100% de disponibilidade de venda</span>, mesmo sob instabilidade ou queda total de conexão.</p>
-        </div>
-        <div>
-          <p class="text-[#38bdf8] text-xs mb-1">// solução</p>
-          <p>Implementação de arquitetura <span class="text-neutral-200">offline-first</span> em Spring Boot, com isolamento estrito de tenants via Hibernate + PostgreSQL e sincronização por mensageria assíncrona.</p>
-        </div>
-        <div>
-          <p class="text-[#38bdf8] text-xs mb-1">// resultado</p>
-          <p><span class="text-neutral-200">Zero downtime</span> percebido pelo cliente final em quedas de rede, com isolamento de dados validado entre múltiplos tenants em produção.</p>
-        </div>
-      </div>
-
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <article class="card-hover card-blue bg-[#111111] border border-[#222222] rounded-lg p-6 flex flex-col">
+      <p class="text-xs text-neutral-500 mb-4">java · quarkus</p>
+      <h3 class="text-white font-medium mb-3"><a href="https://github.com/Rafael-0011/quarkus-rest-crud-study" target="_blank" rel="noopener noreferrer" class="hover:text-[#38bdf8] transition-colors">Quarkus REST CRUD Study</a></h3>
+      <p class="text-neutral-400 text-sm leading-relaxed flex-1">CRUD de usuários desenvolvido com Quarkus, REST, Panache, JPA e DTOs para estudo de desenvolvimento backend em Java.</p>
       <div class="flex flex-wrap gap-2 mt-6 pt-5 border-t border-[#1e1e1e]">
-        <span class="tag text-[#38bdf8] px-2.5 py-1 rounded">Java 17</span>
-        <span class="tag text-[#38bdf8] px-2.5 py-1 rounded">Spring Boot</span>
-        <span class="tag text-[#38bdf8] px-2.5 py-1 rounded">Multi-Tenancy</span>
+        <span class="tag text-[#38bdf8] px-2.5 py-1 rounded">Quarkus</span>
+        <span class="tag text-[#38bdf8] px-2.5 py-1 rounded">REST</span>
+        <span class="tag text-[#38bdf8] px-2.5 py-1 rounded">Panache</span>
       </div>
-    </div>
+      <a href="https://github.com/Rafael-0011/quarkus-rest-crud-study" target="_blank" rel="noopener noreferrer" class="mt-5 text-[#38bdf8] text-xs hover:underline">Ver repositório →</a>
+    </article>
 
-    <!-- CARD 2 — VERDE -->
-    <div class="card-hover card-green bg-[#111111] border border-[#222222] rounded-lg p-6 flex flex-col">
-      <div class="flex items-center gap-2 mb-4">
-        <span class="w-2 h-2 rounded-full bg-[#22c55e]"></span>
-        <p class="text-xs text-neutral-500">automação</p>
-      </div>
-
-      <h3 class="text-white font-medium mb-1">Sistema de Diárias</h3>
-      <p class="text-neutral-500 text-xs mb-5">Ematerce</p>
-
-      <div class="space-y-4 text-sm text-neutral-400 leading-relaxed flex-1">
-        <div>
-          <p class="text-[#22c55e] text-xs mb-1">// desafio</p>
-          <p>Controle de diárias e viagens 100% manual em planilhas — processo lento, sujeito a erro humano e sem rastreabilidade orçamentária.</p>
-        </div>
-        <div>
-          <p class="text-[#22c55e] text-xs mb-1">// solução</p>
-          <p>Construção de fluxo automatizado de solicitação/aprovação com controle orçamentário integrado, sustentado por esteira de CI/CD com gates de qualidade via SonarQube.</p>
-        </div>
-        <div>
-          <p class="text-[#22c55e] text-xs mb-1">// resultado</p>
-          <p class="flex items-start gap-2"><span class="text-[#22c55e]">✓</span> <span><span class="text-neutral-200">Eliminação de 100%</span> dos processos manuais em planilha</span></p>
-          <p class="flex items-start gap-2"><span class="text-[#22c55e]">✓</span> <span><span class="text-neutral-200">Economia de ~3h por ciclo</span> de aprovação</span></p>
-          <p class="flex items-start gap-2"><span class="text-[#22c55e]">✓</span> <span><span class="text-neutral-200">Zero regressões</span> reportadas pós-deploy</span></p>
-        </div>
-      </div>
-
+    <article class="card-hover card-green bg-[#111111] border border-[#222222] rounded-lg p-6 flex flex-col">
+      <p class="text-xs text-neutral-500 mb-4">python · automação</p>
+      <h3 class="text-white font-medium mb-3"><a href="https://github.com/Rafael-0011/baixaMusica" target="_blank" rel="noopener noreferrer" class="hover:text-[#22c55e] transition-colors">baixaMusica</a></h3>
+      <p class="text-neutral-400 text-sm leading-relaxed flex-1">Script em Python para baixar áudio de vídeos ou playlists do YouTube em MP3 usando yt-dlp, com escolha e reaproveitamento da pasta de saída.</p>
       <div class="flex flex-wrap gap-2 mt-6 pt-5 border-t border-[#1e1e1e]">
-        <span class="tag text-[#22c55e] px-2.5 py-1 rounded">CI/CD</span>
-        <span class="tag text-[#22c55e] px-2.5 py-1 rounded">SonarQube</span>
-        <span class="tag text-[#22c55e] px-2.5 py-1 rounded">JUnit</span>
+        <span class="tag text-[#22c55e] px-2.5 py-1 rounded">Python</span>
+        <span class="tag text-[#22c55e] px-2.5 py-1 rounded">yt-dlp</span>
+        <span class="tag text-[#22c55e] px-2.5 py-1 rounded">FFmpeg</span>
       </div>
-    </div>
+      <a href="https://github.com/Rafael-0011/baixaMusica" target="_blank" rel="noopener noreferrer" class="mt-5 text-[#22c55e] text-xs hover:underline">Ver repositório →</a>
+    </article>
 
-    <!-- CARD 3 — VERMELHO -->
-    <div class="card-hover card-red bg-[#111111] border border-[#222222] rounded-lg p-6 flex flex-col">
-      <div class="flex items-center gap-2 mb-4">
-        <span class="w-2 h-2 rounded-full bg-[#ef4444]"></span>
-        <p class="text-xs text-neutral-500">segurança-crítica</p>
-      </div>
-
-      <h3 class="text-white font-medium mb-1">Segurança & Modernização</h3>
-      <p class="text-neutral-500 text-xs mb-5">SESA / Resolva Já</p>
-
-      <div class="space-y-4 text-sm text-neutral-400 leading-relaxed flex-1">
-        <div>
-          <p class="text-[#ef4444] text-xs mb-1">// desafio</p>
-          <p><span class="text-neutral-200">Vulnerabilidade crítica identificada</span>: vazamento de dados entre tenants por isolamento inadequado em arquitetura multi-tenant.</p>
-        </div>
-        <div>
-          <p class="text-[#ef4444] text-xs mb-1">// solução</p>
-          <p>Correção estrutural do isolamento na camada de persistência e implementação de autenticação robusta com Keycloak + JWT, seguindo Spring Security.</p>
-        </div>
-        <div>
-          <p class="text-[#ef4444] text-xs mb-1">// resultado</p>
-          <p class="flex items-start gap-2"><span class="text-[#ef4444]">⚠</span> <span><span class="text-neutral-200">Correção da vulnerabilidade antes da produção</span> — risco de exposição neutralizado</span></p>
-          <p class="flex items-start gap-2"><span class="text-[#ef4444]">⚠</span> <span><span class="text-neutral-200">Camada de autenticação modernizada</span> e 100% auditável</span></p>
-        </div>
-      </div>
-
+    <article class="card-hover card-red bg-[#111111] border border-[#222222] rounded-lg p-6 flex flex-col">
+      <p class="text-xs text-neutral-500 mb-4">spring boot · aws</p>
+      <h3 class="text-white font-medium mb-3"><a href="https://github.com/Rafael-0011/springboot-aws-s3-crud-example" target="_blank" rel="noopener noreferrer" class="hover:text-[#ef4444] transition-colors">Spring Boot AWS S3 CRUD</a></h3>
+      <p class="text-neutral-400 text-sm leading-relaxed flex-1">API REST para gerenciamento de documentos com PostgreSQL, AWS S3, Flyway, DTOs, validação, tratamento de exceções e Swagger.</p>
       <div class="flex flex-wrap gap-2 mt-6 pt-5 border-t border-[#1e1e1e]">
-        <span class="tag text-[#ef4444] px-2.5 py-1 rounded">Keycloak</span>
-        <span class="tag text-[#ef4444] px-2.5 py-1 rounded">JWT</span>
-        <span class="tag text-[#ef4444] px-2.5 py-1 rounded">Spring Security</span>
+        <span class="tag text-[#ef4444] px-2.5 py-1 rounded">Spring Boot</span>
+        <span class="tag text-[#ef4444] px-2.5 py-1 rounded">AWS S3</span>
+        <span class="tag text-[#ef4444] px-2.5 py-1 rounded">PostgreSQL</span>
       </div>
-    </div>
+      <a href="https://github.com/Rafael-0011/springboot-aws-s3-crud-example" target="_blank" rel="noopener noreferrer" class="mt-5 text-[#ef4444] text-xs hover:underline">Ver repositório →</a>
+    </article>
 
+    <article class="card-hover card-blue bg-[#111111] border border-[#222222] rounded-lg p-6 flex flex-col">
+      <p class="text-xs text-neutral-500 mb-4">java 21 · segurança</p>
+      <h3 class="text-white font-medium mb-3"><a href="https://github.com/Rafael-0011/portal-motorista-api" target="_blank" rel="noopener noreferrer" class="hover:text-[#38bdf8] transition-colors">Portal Motorista API</a></h3>
+      <p class="text-neutral-400 text-sm leading-relaxed flex-1">API para gerenciamento de motoristas e autenticação, com JWT, RBAC, Flyway, validação, tratamento global de exceções e OpenAPI.</p>
+      <div class="flex flex-wrap gap-2 mt-6 pt-5 border-t border-[#1e1e1e]">
+        <span class="tag text-[#38bdf8] px-2.5 py-1 rounded">Java 21</span>
+        <span class="tag text-[#38bdf8] px-2.5 py-1 rounded">JWT</span>
+        <span class="tag text-[#38bdf8] px-2.5 py-1 rounded">Docker</span>
+      </div>
+      <a href="https://github.com/Rafael-0011/portal-motorista-api" target="_blank" rel="noopener noreferrer" class="mt-5 text-[#38bdf8] text-xs hover:underline">Ver repositório →</a>
+    </article>
+
+    <article class="card-hover card-red bg-[#111111] border border-[#222222] rounded-lg p-6 flex flex-col">
+      <p class="text-xs text-neutral-500 mb-4">next.js · frontend</p>
+      <h3 class="text-white font-medium mb-3"><a href="https://github.com/Rafael-0011/portal-motorista-front" target="_blank" rel="noopener noreferrer" class="hover:text-[#ef4444] transition-colors">Portal Motorista Frontend</a></h3>
+      <p class="text-neutral-400 text-sm leading-relaxed flex-1">Sistema web para cadastro, busca e gerenciamento de motoristas, integrado à API com autenticação JWT, filtros, paginação e controle de acesso por perfil.</p>
+      <div class="flex flex-wrap gap-2 mt-6 pt-5 border-t border-[#1e1e1e]">
+        <span class="tag text-[#ef4444] px-2.5 py-1 rounded">Next.js 15</span>
+        <span class="tag text-[#ef4444] px-2.5 py-1 rounded">TypeScript</span>
+        <span class="tag text-[#ef4444] px-2.5 py-1 rounded">Tailwind CSS</span>
+        <span class="tag text-[#ef4444] px-2.5 py-1 rounded">React Query</span>
+      </div>
+      <a href="https://github.com/Rafael-0011/portal-motorista-front" target="_blank" rel="noopener noreferrer" class="mt-5 text-[#ef4444] text-xs hover:underline">Ver repositório →</a>
+    </article>
+
+    <article class="card-hover card-green bg-[#111111] border border-[#222222] rounded-lg p-6 flex flex-col">
+      <p class="text-xs text-neutral-500 mb-4">rust · cli</p>
+      <h3 class="text-white font-medium mb-3"><a href="https://github.com/Rafael-0011/music-player" target="_blank" rel="noopener noreferrer" class="hover:text-[#22c55e] transition-colors">Music Player</a></h3>
+      <p class="text-neutral-400 text-sm leading-relaxed flex-1">Aplicação Rust para reprodução e gerenciamento de músicas, com play/pause, shuffle, navegação entre faixas e exclusão.</p>
+      <div class="flex flex-wrap gap-2 mt-6 pt-5 border-t border-[#1e1e1e]">
+        <span class="tag text-[#22c55e] px-2.5 py-1 rounded">Rust</span>
+        <span class="tag text-[#22c55e] px-2.5 py-1 rounded">Rodio</span>
+        <span class="tag text-[#22c55e] px-2.5 py-1 rounded">CLI</span>
+      </div>
+      <a href="https://github.com/Rafael-0011/music-player" target="_blank" rel="noopener noreferrer" class="mt-5 text-[#22c55e] text-xs hover:underline">Ver repositório →</a>
+    </article>
   </div>
 </section>
 
 <!-- ============ TECH STACK ============ -->
 <section id="stack" class="max-w-6xl mx-auto px-6 py-24 border-t border-[#1a1a1a]">
-  <p class="text-neutral-600 text-xs mb-3">03 // tecnologias</p>
+  <p class="text-[#22c55e] text-xs mb-3">04 // tecnologias</p>
   <h2 class="text-2xl md:text-3xl text-white font-medium mb-12">
-    <span class="text-[#38bdf8]">&lt;</span>stack<span class="text-[#38bdf8]">/&gt;</span>
+    <span class="text-[#22c55e]">&lt;</span>stack<span class="text-[#22c55e]">/&gt;</span>
   </h2>
 
   <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
@@ -407,7 +399,7 @@ html {
 <!-- ============ CONTATO / CTA / FOOTER ============ -->
 <footer id="contato" class="border-t border-[#1a1a1a]">
   <div class="max-w-6xl mx-auto px-6 py-24 text-center">
-    <p class="text-neutral-600 text-xs mb-3">04 // contato</p>
+    <p class="text-[#38bdf8] text-xs mb-3">05 // contato</p>
     <h2 class="text-2xl md:text-4xl text-white font-medium mb-4">
       Bora conversar sobre a
       <span class="text-[#38bdf8]">próxima linha de código</span>?
@@ -431,9 +423,8 @@ html {
     </div>
 
     <div class="flex flex-wrap justify-center gap-8 text-sm text-neutral-500 border-t border-[#1a1a1a] pt-8">
-      <a href="mailto:rafael.chaves@email.com" class="hover:text-[#38bdf8] transition-colors">rafael.chaves@email.com</a>
-      <a href="https://www.linkedin.com/in/rafael-chaves-0a4a51248" target="_blank" rel="noopener noreferrer" class="hover:text-[#38bdf8] transition-colors">linkedin.com/in/rafaelchaves</a>
-      <a href="https://github.com/Rafael-0011" target="_blank" rel="noopener noreferrer" class="hover:text-[#38bdf8] transition-colors">github.com/rafaelchaves</a>
+      <a href="tel:+5585992191471" class="hover:text-[#38bdf8] transition-colors">(85) 99219-1471</a>
+      <a href="mailto:rafaelchavesdev1@gmail.com" class="hover:text-[#38bdf8] transition-colors">rafaelchavesdev1@gmail.com</a>
     </div>
 
     <p class="text-neutral-700 text-xs mt-10">
