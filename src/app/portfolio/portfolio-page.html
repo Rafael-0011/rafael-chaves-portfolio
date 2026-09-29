@@ -1,0 +1,257 @@
+@if (profile(); as data) {
+  <a class="skip" href="#sobre">Pular para o conteúdo</a>
+  <header class="top">
+    <nav class="wrap" aria-label="Principal">
+      <a class="logo" href="#top" (click)="closeMenu()">RAFAEL<i>.</i>CHAVES</a>
+      <button
+        id="mb"
+        type="button"
+        [attr.aria-expanded]="menuOpen"
+        aria-controls="menu"
+        (click)="menuOpen = !menuOpen"
+      >
+        menu
+      </button>
+      <ul id="menu" [class.open]="menuOpen">
+        @for (item of data.navigation; track item.anchor) {
+          <li>
+            <a [href]="item.anchor" (click)="closeMenu()">// {{ item.label }}</a>
+          </li>
+        }
+      </ul>
+      <a
+        class="profile-switch"
+        [href]="profileSwitchPath"
+        [attr.aria-label]="profileSwitchLabel"
+        [title]="profileSwitchLabel"
+        >&lt;/&gt;</a
+      >
+    </nav>
+  </header>
+
+  <main>
+    <section id="top" class="wrap">
+      <p class="prompt"><span>$</span> whoami <span class="cursor" aria-hidden="true">_</span></p>
+      <h1>
+        {{ data.hero.title }} <em>{{ data.hero.accent }}</em>
+      </h1>
+      <p class="sub">{{ data.hero.description }}</p>
+      <span class="status">{{ data.hero.status }}</span>
+      <div class="actions">
+        <a class="btn p" href="mailto:rafaelchavesdev1@gmail.com">Falar por e-mail</a>
+        <a
+          class="btn"
+          href="https://www.linkedin.com/in/rafael-chaves-0a4a51248"
+          target="_blank"
+          rel="noopener noreferrer"
+          >LinkedIn</a
+        >
+        <a
+          class="btn"
+          href="https://github.com/Rafael-0011"
+          target="_blank"
+          rel="noopener noreferrer"
+          >GitHub</a
+        >
+        <a class="btn" href="/curriculo-rafael-chaves.pdf" download>Baixar currículo</a>
+      </div>
+    </section>
+
+    <section id="sobre" class="wrap blue">
+      <h2><b>&lt;</b>sobre<b>/&gt;</b></h2>
+      <div class="grid side">
+        <div class="txt">
+          @for (paragraph of data.about.paragraphs; track paragraph) {
+            <p [innerHTML]="paragraph"></p>
+          }
+        </div>
+        <div class="card">
+          <small>{{ data.about.fileLabel }}</small>
+          @if (data.about.listType === 'ol') {
+            <ol class="list">
+              @for (item of data.about.list; track item) {
+                <li>{{ item }}</li>
+              }
+            </ol>
+          } @else {
+            <ul class="list">
+              @for (item of data.about.list; track item) {
+                <li>{{ item }}</li>
+              }
+            </ul>
+          }
+        </div>
+      </div>
+    </section>
+
+    <section id="experiencia" class="wrap red">
+      <h2><b>&lt;</b>experiência<b>/&gt;</b></h2>
+      <p class="lead">{{ data.experience.intro }}</p>
+      <div class="job">
+        <div class="jh">
+          <h3>{{ data.experience.role }}</h3>
+          <time>{{ data.experience.period }}</time>
+        </div>
+        <p class="hint">{{ data.experience.note }}</p>
+        <ul>
+          @for (item of data.experience.highlights; track item) {
+            <li>{{ item }}</li>
+          }
+        </ul>
+      </div>
+    </section>
+
+    <section id="projetos" class="wrap blue">
+      <h2><b>&lt;</b>projetos<b>/&gt;</b></h2>
+      <p class="lead">{{ data.projectsIntro }}</p>
+      @for (project of data.projects; track project.title) {
+        @if (project.group) {
+          <p class="grp" [class]="project.color">{{ project.group }}</p>
+        }
+        <article
+          class="card"
+          [class.feat-red]="project.featured_color_red"
+          [class.feat-green]="project.featured_color_green"
+          [class.feat-blue]="project.featured_color_blue"
+          [class]="project.color"
+        >
+          <small>{{ project.eyebrow }}</small>
+          <h3>{{ project.title }}</h3>
+          <p>{{ project.description }}</p>
+          <div class="tags">
+            @for (tag of project.tags; track tag) {
+              <span class="tag">{{ tag }}</span>
+            }
+          </div>
+          @if (project.links.length) {
+            <div class="links">
+              @for (link of project.links; track link.url) {
+                <a [href]="link.url" target="_blank" rel="noopener noreferrer"
+                  >{{ link.label }} →</a
+                >
+              }
+            </div>
+          }
+        </article>
+      }
+    </section>
+
+    @if (data.security) {
+      <section id="seguranca" class="wrap red">
+        <h2><b>&lt;</b>segurança<b>/&gt;</b></h2>
+        <div class="grid side">
+          <div class="txt">
+            @for (paragraph of data.security.paragraphs; track paragraph) {
+              <p [innerHTML]="paragraph"></p>
+            }
+          </div>
+          <div class="card">
+            <small>{{ data.security.fileLabel }}</small>
+            <ul class="list">
+              @for (item of data.security.list; track item) {
+                <li>{{ item }}</li>
+              }
+            </ul>
+          </div>
+        </div>
+        <div class="badges">
+          @for (badge of data.badges; track badge.image) {
+            <a [href]="badge.url" target="_blank" rel="noopener noreferrer"
+              ><img [src]="'/' + badge.image" [alt]="badge.alt" loading="lazy"
+            /></a>
+          }
+        </div>
+      </section>
+    }
+
+    <section [id]="data.security ? 'stack' : 'competencias'" class="wrap green">
+      <h2><b>&lt;</b>{{ data.security ? 'stack' : 'competências' }}<b>/&gt;</b></h2>
+      <div class="grid">
+        @for (group of data.skillGroups; track group.label) {
+          <div
+            [class.feat-red]="group.featured_color_red"
+            [class.feat-green]="group.featured_color_green"
+            [class.feat-blue]="group.featured_color_blue"
+            class="card"
+            [class]="group.color"
+          >
+            <small>{{ group.label }}</small>
+            <div class="tags n">
+              @for (item of group.items; track item) {
+                <span class="tag">{{ item }}</span>
+              }
+            </div>
+          </div>
+        }
+      </div>
+      @if (data.competencyNote) {
+        <div class="txt competency-note"><p [innerHTML]="data.competencyNote"></p></div>
+      }
+      @if (data.badges.length) {
+        <div class="badges">
+          @for (badge of data.badges; track badge.image) {
+            <a [href]="badge.url" target="_blank" rel="noopener noreferrer"
+              ><img [src]="'/' + badge.image" [alt]="badge.alt" loading="lazy"
+            /></a>
+          }
+        </div>
+      }
+    </section>
+
+    <section id="certificados" class="wrap green">
+      <h2><b>&lt;</b>certificados<b>/&gt;</b></h2>
+      <p class="lead">Cada card abre a credencial completa.</p>
+      @for (group of data.certificates; track group.label) {
+        <p class="grp" [class]="group.color">{{ group.label }}</p>
+        <div class="grid g3" [class]="group.color">
+          @for (certificate of group.items; track certificate.title) {
+            <a
+              [class.feat-red]="certificate.featured_color_red"
+              [class.feat-green]="certificate.featured_color_green"
+              [class.feat-blue]="certificate.featured_color_blue"
+              class="card"
+              [href]="certificate.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><small>{{ certificate.issuer }}</small>
+              <h3>{{ certificate.title }}</h3>
+              <p>{{ certificate.description }}</p>
+              <span class="go">Abrir certificado →</span></a
+            >
+          }
+        </div>
+      }
+    </section>
+  </main>
+
+  <footer id="contato" class="wrap blue">
+    <h2>
+      {{ data.footer.title }} <b>{{ data.footer.accent }}</b
+      >?
+    </h2>
+    <p class="lead">{{ data.footer.description }}</p>
+    <div class="actions">
+      <a class="btn p" href="mailto:rafaelchavesdev1@gmail.com">Falar por e-mail</a
+      ><a
+        class="btn"
+        href="https://www.linkedin.com/in/rafael-chaves-0a4a51248"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Falar no LinkedIn</a
+      ><a
+        class="btn"
+        href="https://github.com/Rafael-0011"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Ver o GitHub</a
+      >
+    </div>
+    <div class="contact">
+      <a href="tel:+5585992191471">(85) 99219-1471</a
+      ><a href="mailto:rafaelchavesdev1@gmail.com">rafaelchavesdev1@gmail.com</a>
+    </div>
+    <p class="hint">// costumo responder em até 24h</p>
+  </footer>
+} @else {
+  <main class="loading wrap"><p class="prompt">$ carregando perfil_</p></main>
+}

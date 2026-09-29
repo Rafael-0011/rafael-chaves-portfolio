@@ -1,0 +1,298 @@
+{
+  "meta": {
+    "title": "Rafael Chaves - Desenvolvedor Backend Java & Spring Boot",
+    "description": "Rafael Chaves, desenvolvedor backend Java e Spring Boot com foco em segurança de aplicações, multi-tenancy e CI/CD. Sistemas do setor público do Ceará."
+  },
+  "hero": {
+    "title": "Rafael Chaves, desenvolvedor",
+    "accent": "backend Java & Spring Boot",
+    "description": "Tenho experiência construindo e mantendo sistemas do setor público do Ceará, com foco em segurança de aplicações, arquitetura multi-tenant e entrega com CI/CD.",
+    "status": "aberto a oportunidades em backend e segurança de aplicações"
+  },
+  "navigation": [
+    { "label": "sobre", "anchor": "#sobre" },
+    { "label": "experiência", "anchor": "#experiencia" },
+    { "label": "projetos", "anchor": "#projetos" },
+    { "label": "segurança", "anchor": "#seguranca" },
+    { "label": "tecnologias", "anchor": "#stack" },
+    { "label": "certificados", "anchor": "#certificados" },
+    { "label": "contato", "anchor": "#contato" }
+  ],
+  "about": {
+    "paragraphs": [
+      "Sou cearense, movido a café ☕ e código limpo. Minha jornada com backend começou em sistemas do setor público, como a <strong>SESA</strong> e a <strong>Ematerce</strong>, onde um bug significa gente esperando atendimento. Isso me ensinou cedo a levar responsabilidade a sério sem perder a leveza.",
+      "Minha base é <strong>Java 8 a 17</strong> e <strong>Spring Boot</strong>, com atenção a três coisas: segurança de dados, arquitetura multi-tenant e qualidade validada por pipeline de CI/CD. Gosto de achar a solução mais simples para um problema complicado, e de fazer isso em time: trocar ideia, revisar PR, aprender junto."
+    ],
+    "fileLabel": "foco.json",
+    "listType": "ul",
+    "list": [
+      "Arquitetura multi-tenant",
+      "Segurança e governança de dados",
+      "Automação de processos críticos",
+      "CI/CD e qualidade contínua"
+    ]
+  },
+  "experience": {
+    "intro": "Sistemas reais, entregues do zero ou evoluídos em produção.",
+    "role": "Desenvolvedor Full Stack, Colmeia Soluções em Tecnologia",
+    "period": "Dez/2024 – Dez/2025",
+    "note": "Alocado na SESA-CE (Secretaria da Saúde do Ceará) a partir de Jul/2025",
+    "highlights": [
+      "Desenvolvi sistemas Spring Boot e APIs REST do zero, incluindo o Sistema de Diárias da Ematerce.",
+      "Corrigi uma vulnerabilidade crítica de multi-tenancy e implementei Spring Security, JWT e Keycloak.",
+      "Mantive 2 sistemas legados críticos em Java 8/JSF, corrigindo mais de 15 inconsistências e reduzindo reclamações em cerca de 10%.",
+      "Criei testes com JUnit, pipelines GitLab CI/CD com SonarQube, relatórios com JasperReports e versionamento de banco com Flyway."
+    ]
+  },
+  "projectsIntro": "Aplicações que mostram minha prática com APIs, autenticação, persistência e nuvem.",
+  "projects": [
+    {
+      "color": "blue",
+      "eyebrow": "destaque · java 21 + next.js",
+      "title": "Portal Motorista",
+      "description": "Sistema completo de cadastro e gestão de motoristas. A API cuida de autenticação com JWT, controle de acesso por perfil (RBAC), migrations com Flyway, validação, tratamento global de exceções e documentação OpenAPI. O front consome a API com filtros, paginação e telas protegidas por perfil.",
+      "tags": ["Java 21", "JWT", "RBAC", "Docker", "Next.js 15", "TypeScript", "React Query"],
+      "links": [
+        {
+          "label": "Repositório da API",
+          "url": "https://github.com/Rafael-0011/portal-motorista-api"
+        },
+        {
+          "label": "Repositório do front",
+          "url": "https://github.com/Rafael-0011/portal-motorista-front"
+        }
+      ],
+      "featured_color_blue": true
+    },
+    {
+      "color": "green",
+      "eyebrow": "spring boot · aws",
+      "title": "Spring Boot AWS S3 CRUD",
+      "description": "API REST para gerenciamento de documentos com PostgreSQL, AWS S3, Flyway, DTOs, validação e Swagger.",
+      "tags": ["Spring Boot", "AWS S3", "PostgreSQL"],
+      "links": [
+        {
+          "label": "Ver repositório",
+          "url": "https://github.com/Rafael-0011/springboot-aws-s3-crud-example"
+        }
+      ],
+      "featured_color_green": true
+    },
+    {
+      "color": "red",
+      "eyebrow": "java · quarkus",
+      "title": "Quarkus REST CRUD",
+      "description": "CRUD de usuários com Quarkus, Panache, JPA e DTOs, feito para estudar o ecossistema além do Spring.",
+      "tags": ["Quarkus", "Panache", "JPA"],
+      "links": [
+        {
+          "label": "Ver repositório",
+          "url": "https://github.com/Rafael-0011/quarkus-rest-crud-study"
+        }
+      ],
+      "featured_color_red": true
+    }
+  ],
+  "security": {
+    "paragraphs": [
+      "Trabalhar com sistemas públicos me mostrou o peso da <strong>segurança</strong>. Corrigir um vazamento de dados entre tenants e implementar Spring Security, JWT e Keycloak foi quando percebi que proteger um sistema é tão interessante quanto construí-lo.",
+      "Com o avanço da IA criando novos riscos e vulnerabilidades, decidi expandir minha atuação para <strong>segurança de aplicações</strong> sem abandonar o desenvolvimento: minha base em backend é o que me ajuda a entender como as aplicações falham.",
+      "Hoje estudo de forma ampla, com foco em OWASP Top 10, autenticação e API Security, e sigo aberto a oportunidades em backend e em segurança."
+    ],
+    "fileLabel": "radar.json",
+    "list": [
+      "OWASP Top 10 e API Security",
+      "AuthN/AuthZ, JWT e sessão",
+      "Secure coding em Java/Spring",
+      "CTFs (Hack The Box, TryHackMe)"
+    ]
+  },
+  "skillGroups": [
+    {
+      "label": "backend",
+      "color": "blue",
+      "items": [
+        "Java 8–21",
+        "Spring Boot",
+        "Spring MVC",
+        "Hibernate/JPA",
+        "Quarkus",
+        "REST/OpenAPI"
+      ],
+      "featured_color_blue": true
+    },
+    {
+      "label": "segurança",
+      "color": "red",
+      "items": [
+        "Spring Security",
+        "JWT",
+        "Keycloak",
+        "RBAC",
+        "OWASP Top 10",
+        "API Security",
+        "Secure Coding"
+      ],
+      "featured_color_red": true
+    },
+    {
+      "label": "dados e devops",
+      "color": "green",
+      "items": [
+        "PostgreSQL",
+        "Flyway",
+        "Multi-tenancy",
+        "Docker",
+        "GitLab CI/CD",
+        "SonarQube",
+        "JUnit",
+        "AWS (S3, Lambda)",
+        "Apache Kafka"
+      ],
+      "featured_color_green": true
+    },
+    {
+      "label": "também uso",
+      "color": "blue",
+      "items": ["Next.js", "TypeScript", "Python", "Rust", "Linux"],
+      "featured_color_blue": true
+    },
+    {
+      "label": "em estudo",
+      "color": "blue",
+      "items": ["Redes (IPv4/IPv6)", "Detecção de ameaças", "CTFs"],
+      "featured_color_blue": true
+    }
+  ],
+  "certificates": [
+    {
+      "label": "segurança",
+      "color": "red",
+      "items": [
+        {
+          "issuer": "Cisco Networking Academy · 2026",
+          "title": "Introdução à Cibersegurança",
+          "description": "Fundamentos de cibersegurança.",
+          "url": "/certificados/Introduction_to_Cybersecurity_certificate_rafaelsora0-gmail-com_1fd6b00b-b672-49d2-ae9d-d524cf038bfa.pdf",
+          "featured_color_red": true
+        },
+        {
+          "issuer": "Hackers do Bem",
+          "title": "Nivelamento em Cibersegurança",
+          "description": "Trilha de nivelamento em cibersegurança.",
+          "url": "/certificados/Certificado%20-%20Nivelamento.pdf",
+          "featured_color_red": true
+        },
+        {
+          "issuer": "Hackers do Bem",
+          "title": "Básico em Cibersegurança",
+          "description": "Trilha básica em cibersegurança.",
+          "url": "/certificados/Certificado_-_Bsico.pdf",
+          "featured_color_red": true
+        }
+      ]
+    },
+    {
+      "label": "java e backend",
+      "color": "blue",
+      "items": [
+        {
+          "issuer": "Udemy",
+          "title": "Java completo",
+          "description": "OO, programação funcional, Spring Boot, JPA, Hibernate, MySQL e MongoDB.",
+          "url": "/certificados/UC-a7d2c1dd-5ffa-4031-80f4-f38c016fb05d.pdf",
+          "featured_color_blue": true
+        },
+        {
+          "issuer": "Udemy",
+          "title": "Testes unitários",
+          "description": "Boas práticas e principais ferramentas, criando os testes desde o início.",
+          "url": "/certificados/UC-18a35034-fe1f-4ac6-9672-048a516428ef.pdf",
+          "featured_color_blue": true
+        },
+        {
+          "issuer": "Udemy",
+          "title": "Padrões de Projeto",
+          "description": "Os principais padrões de design de software do mercado.",
+          "url": "/certificados/UC-cbb521c5-8a54-47dd-bb8f-5bf4666dc7a8.pdf",
+          "featured_color_blue": true
+        },
+        {
+          "issuer": "Udemy",
+          "title": "Apache Kafka",
+          "description": "Mensageria e streaming de eventos com Kafka.",
+          "url": "/certificados/UC-fc61b6ef-23bc-4a96-a2f1-18a1ce12c5bf.pdf",
+          "featured_color_blue": true
+        },
+        {
+          "issuer": "Geração Tech",
+          "title": "Desenvolvedor Full Stack",
+          "description": "Conclusão do programa Geração Tech.",
+          "url": "/certificados/certificado%20gera%C3%A7%C3%A3o%20tech.pdf",
+          "featured_color_blue": true
+        }
+      ]
+    },
+    {
+      "label": "cloud, devops e formação",
+      "color": "green",
+      "items": [
+        {
+          "issuer": "Rocketseat",
+          "title": "Aplicação serverless com Java",
+          "description": "Integração com AWS S3, endpoints via API Gateway e processamento com AWS Lambda.",
+          "url": "https://app.rocketseat.com.br/certificates/daeb4dcd-6c86-4724-bcab-c95cc59b7467",
+          "featured_color_green": true
+        },
+        {
+          "issuer": "Udemy",
+          "title": "DevOps: Automação",
+          "description": "Docker, Terraform, Ansible, Kubernetes, CI/CD no Azure e Datadog.",
+          "url": "/certificados/UC-af896751-333a-4e4d-88f9-0cd17f1201d4.pdf",
+          "featured_color_green": true
+        },
+        {
+          "issuer": "Universidade Estácio de Sá · 2023",
+          "title": "Programação de Algoritmos Escaláveis",
+          "description": "Competência em programação de algoritmos escaláveis.",
+          "url": "/certificados/PROGRAMA%C3%87%C3%83O-DE-ALGORITMOS-ESCAL%C3%81VEIS.pdf",
+          "featured_color_green": true
+        },
+        {
+          "issuer": "Universidade Estácio de Sá · 2024",
+          "title": "Aplicações rápidas em Python",
+          "description": "Python para Cloud, IoT e Big Data.",
+          "url": "/certificados/DESENVOLVIMENTO-R%C3%81PIDO-DE-APLICA%C3%87%C3%95ES-EM-PYTHON-PARA-CLOUD-IOT-E-BIGDATA.pdf",
+          "featured_color_green": true
+        }
+      ]
+    }
+  ],
+  "badges": [
+    {
+      "url": "https://www.credly.com/badges/32e23f0a-30f9-458c-b6c7-92066187d5c8/public_url",
+      "image": "badge/introduction-to-cybersecurity.png",
+      "alt": "Badge Cisco: Introduction to Cybersecurity"
+    },
+    {
+      "url": "https://www.credly.com/badges/2f7ffd06-cfe3-4dc3-8740-72f0a089f808/public_url",
+      "image": "badge/development-and-basic-concepts-of-cloud-computing.png",
+      "alt": "Badge Cisco: Desenvolvimento e conceitos básicos de Cloud Computing"
+    },
+    {
+      "url": "https://ava.hackersdobem.org.br/badges/badge.php?hash=c2161c574b7cdc608cb244633f72c8ac7a035fad",
+      "image": "badge/Nivelamento.png",
+      "alt": "Badge Hackers do Bem: Nivelamento"
+    },
+    {
+      "url": "https://ava.hackersdobem.org.br/badges/badge.php?hash=b8bccbd658c8fe42676b83edfb3af83276d8383d",
+      "image": "badge/Básico.png",
+      "alt": "Badge Hackers do Bem: Básico"
+    }
+  ],
+  "footer": {
+    "title": "Vamos conversar sobre a próxima",
+    "accent": "linha de código",
+    "description": "Se você chegou até aqui, já viu como eu penso arquitetura, segurança e entrega. Me chame."
+  }
+}

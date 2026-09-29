@@ -1,0 +1,30 @@
+:root { color-scheme: dark; }
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+body {
+	margin: 0;
+	background: #000 radial-gradient(#1c1c1c 1px, transparent 1px) 0 0 / 24px 24px;
+	color: #d4d4d4;
+	font: 15px/1.7 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+	-webkit-font-smoothing: antialiased;
+}
+::selection { background: #38bdf8; color: #000; }
+
+app-portfolio-page h1 { letter-spacing: -0.02em; }
+app-portfolio-page nav ul a[href="#experiencia"]:hover,
+app-portfolio-page nav ul a[href="#seguranca"]:hover { color: #ef4444; }
+app-portfolio-page nav ul a[href="#certificados"]:hover,
+app-portfolio-page nav ul a[href="#stack"]:hover,
+app-portfolio-page nav ul a[href="#competencias"]:hover { color: #22c55e; }
+app-portfolio-page .btn.p:hover { background: #16a34a; border-color: #16a34a; color: #000; }
+app-portfolio-page ol.list { counter-reset: item; }
+app-portfolio-page ol.list li { counter-increment: item; }
+app-portfolio-page ol.list li:before { content: counter(item) ". "; font-family: "Geist Mono", monospace; }
+app-portfolio-page .profile-switch {
+	margin-left: 1rem;
+	color: #38bdf8;
+	font: 0.7rem "Geist Mono", monospace;
+	opacity: 0.18;
+	transition: opacity 0.2s, color 0.2s;
+}
+app-portfolio-page .profile-switch:hover,
+app-portfolio-page .profile-switch:focus-visible { opacity: 1; color: #22c55e; }

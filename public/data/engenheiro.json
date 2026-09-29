@@ -1,0 +1,282 @@
+{
+  "meta": {
+    "title": "Rafael Chaves - Engenheiro de Software",
+    "description": "Rafael Chaves, engenheiro de software. Experiência com backend em produção no setor público do Ceará e projetos em web, cloud, automação e sistemas. Aprendo construindo."
+  },
+  "hero": {
+    "title": "Rafael Chaves,",
+    "accent": "engenheiro de software",
+    "description": "Aprendo construindo. Tenho experiência com backend em produção no setor público do Ceará e projetos em web, cloud, automação e sistemas, sempre pensando em testes, segurança e entrega contínua.",
+    "status": "aberto a oportunidades em engenharia de software"
+  },
+  "navigation": [
+    { "label": "sobre", "anchor": "#sobre" },
+    { "label": "experiência", "anchor": "#experiencia" },
+    { "label": "projetos", "anchor": "#projetos" },
+    { "label": "competências", "anchor": "#competencias" },
+    { "label": "certificados", "anchor": "#certificados" },
+    { "label": "contato", "anchor": "#contato" }
+  ],
+  "about": {
+    "paragraphs": [
+      "Sou cearense, movido a café ☕ e código limpo. Comecei em sistemas do setor público, como a <strong>SESA</strong> e a <strong>Ematerce</strong>, onde um bug significa gente esperando atendimento. Isso me ensinou cedo a levar responsabilidade a sério sem perder a leveza.",
+      "Me vejo como engenheiro porque gosto do problema inteiro: modelar, construir, testar, proteger e colocar no ar. Minha base é <strong>Java e Spring Boot</strong>, mas não me prendo à ferramenta. Quando o problema pede, estudo e uso outra: Quarkus, Next.js, Python, Rust, AWS.",
+      "Prefiro achar a solução mais simples para um problema complicado, e fazer isso em time: trocar ideia, revisar PR, aprender junto.",
+      "<span class=\"hint\">// resumindo: aprendo rápido, entrego com qualidade e gosto de trabalhar junto.</span>"
+    ],
+    "fileLabel": "como-eu-aprendo.json",
+    "listType": "ol",
+    "list": [
+      "Estudo o conceito (curso, documentação)",
+      "Aplico em um projeto real",
+      "Publico o código no GitHub",
+      "Levo o aprendizado para novos desafios"
+    ]
+  },
+  "experience": {
+    "intro": "Sistemas reais, entregues do zero ou evoluídos em produção.",
+    "role": "Desenvolvedor Full Stack, Colmeia Soluções em Tecnologia",
+    "period": "Dez/2024 – Dez/2025",
+    "note": "Alocado na SESA-CE (Secretaria da Saúde do Ceará) a partir de Jul/2025",
+    "highlights": [
+      "Desenvolvi sistemas Spring Boot e APIs REST do zero, incluindo o Sistema de Diárias da Ematerce.",
+      "Corrigi uma vulnerabilidade crítica de multi-tenancy e implementei Spring Security, JWT e Keycloak.",
+      "Mantive 2 sistemas legados críticos em Java 8/JSF, corrigindo mais de 15 inconsistências e reduzindo reclamações em cerca de 10%.",
+      "Criei testes com JUnit, pipelines GitLab CI/CD com SonarQube, relatórios com JasperReports e versionamento de banco com Flyway."
+    ]
+  },
+  "projectsIntro": "Organizados por área, para mostrar o que já construí em cada frente.",
+  "projects": [
+    {
+      "group": "full stack + segurança",
+      "color": "blue",
+      "eyebrow": "java 21 · next.js",
+      "title": "Portal Motorista",
+      "description": "Sistema completo de cadastro e gestão de motoristas. A API cuida de autenticação com JWT, controle de acesso por perfil (RBAC), migrations com Flyway, validação, tratamento global de exceções e documentação OpenAPI. O front consome a API com filtros, paginação e telas protegidas por perfil.",
+      "tags": ["Java 21", "JWT", "RBAC", "Docker", "Next.js 15", "TypeScript", "React Query"],
+      "links": [
+        { "label": "API", "url": "https://github.com/Rafael-0011/portal-motorista-api" },
+        { "label": "Front", "url": "https://github.com/Rafael-0011/portal-motorista-front" }
+      ],
+      "featured": true
+    },
+    {
+      "group": "backend e cloud",
+      "color": "green",
+      "eyebrow": "spring boot · aws",
+      "title": "Spring Boot AWS S3 CRUD",
+      "description": "API REST para gerenciamento de documentos com PostgreSQL, AWS S3, Flyway, DTOs, validação, tratamento de exceções e Swagger.",
+      "tags": ["Spring Boot", "AWS S3", "PostgreSQL"],
+      "links": [
+        {
+          "label": "Ver repositório",
+          "url": "https://github.com/Rafael-0011/springboot-aws-s3-crud-example"
+        }
+      ]
+    },
+    {
+      "color": "green",
+      "eyebrow": "java · quarkus",
+      "title": "Quarkus REST CRUD",
+      "description": "CRUD de usuários com Quarkus, Panache, JPA e DTOs, feito para estudar o ecossistema Java além do Spring.",
+      "tags": ["Quarkus", "Panache", "JPA"],
+      "links": [
+        {
+          "label": "Ver repositório",
+          "url": "https://github.com/Rafael-0011/quarkus-rest-crud-study"
+        }
+      ]
+    },
+    {
+      "group": "automação e sistemas",
+      "color": "red",
+      "eyebrow": "python · automação",
+      "title": "baixaMusica",
+      "description": "Automação de linha de comando em Python que converte mídia em MP3 com yt-dlp e FFmpeg, permitindo escolher e reaproveitar a pasta de saída.",
+      "tags": ["Python", "yt-dlp", "FFmpeg"],
+      "links": [{ "label": "Ver repositório", "url": "https://github.com/Rafael-0011/baixaMusica" }]
+    },
+    {
+      "color": "red",
+      "eyebrow": "rust · cli",
+      "title": "Music Player",
+      "description": "Player de músicas no terminal, escrito em Rust, com play/pause, shuffle, navegação entre faixas e exclusão.",
+      "tags": ["Rust", "Rodio", "CLI"],
+      "links": [
+        { "label": "Ver repositório", "url": "https://github.com/Rafael-0011/music-player" }
+      ]
+    }
+  ],
+  "skillGroups": [
+    {
+      "label": "em produção (experiência profissional)",
+      "color": "blue",
+      "items": [
+        "Java 8–17",
+        "Spring Boot",
+        "Spring MVC",
+        "Hibernate/JPA",
+        "PostgreSQL",
+        "Multi-tenancy",
+        "Spring Security",
+        "JWT",
+        "Keycloak",
+        "JUnit",
+        "GitLab CI/CD",
+        "SonarQube",
+        "Flyway"
+      ]
+    },
+    {
+      "label": "em projetos próprios",
+      "color": "green",
+      "items": [
+        "Java 21",
+        "Quarkus",
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "React Query",
+        "Docker",
+        "AWS S3",
+        "OpenAPI",
+        "Python",
+        "Rust"
+      ]
+    },
+    {
+      "label": "estudando",
+      "color": "red",
+      "items": [
+        "OWASP Top 10",
+        "API Security",
+        "CTFs",
+        "Redes",
+        "Apache Kafka",
+        "AWS Lambda",
+        "Terraform",
+        "Kubernetes"
+      ]
+    }
+  ],
+  "competencyNote": "<strong>Segurança é um dos meus eixos.</strong> Corrigir um vazamento de dados entre tenants e implementar autenticação em sistemas públicos me mostrou que proteger um sistema é tão interessante quanto construí-lo. Estudo segurança de aplicações em paralelo, e ela guia como escrevo código.",
+  "certificates": [
+    {
+      "label": "engenharia e backend",
+      "color": "blue",
+      "items": [
+        {
+          "issuer": "Udemy",
+          "title": "Java completo",
+          "description": "OO, programação funcional, Spring Boot, JPA, Hibernate, MySQL e MongoDB.",
+          "url": "/certificados/UC-a7d2c1dd-5ffa-4031-80f4-f38c016fb05d.pdf"
+        },
+        {
+          "issuer": "Udemy",
+          "title": "Testes unitários",
+          "description": "Boas práticas e principais ferramentas, criando os testes desde o início.",
+          "url": "/certificados/UC-18a35034-fe1f-4ac6-9672-048a516428ef.pdf"
+        },
+        {
+          "issuer": "Udemy",
+          "title": "Padrões de Projeto",
+          "description": "Os principais padrões de design de software do mercado.",
+          "url": "/certificados/UC-cbb521c5-8a54-47dd-bb8f-5bf4666dc7a8.pdf"
+        },
+        {
+          "issuer": "Udemy",
+          "title": "Apache Kafka",
+          "description": "Mensageria e streaming de eventos com Kafka.",
+          "url": "/certificados/UC-fc61b6ef-23bc-4a96-a2f1-18a1ce12c5bf.pdf"
+        },
+        {
+          "issuer": "Universidade Estácio de Sá · 2023",
+          "title": "Programação de Algoritmos Escaláveis",
+          "description": "Competência em programação de algoritmos escaláveis.",
+          "url": "/certificados/PROGRAMA%C3%87%C3%83O-DE-ALGORITMOS-ESCAL%C3%81VEIS.pdf"
+        },
+        {
+          "issuer": "Geração Tech",
+          "title": "Desenvolvedor Full Stack",
+          "description": "Conclusão do programa Geração Tech.",
+          "url": "/certificados/certificado%20gera%C3%A7%C3%A3o%20tech.pdf"
+        }
+      ]
+    },
+    {
+      "label": "cloud, devops e python",
+      "color": "green",
+      "items": [
+        {
+          "issuer": "Rocketseat",
+          "title": "Aplicação serverless com Java",
+          "description": "Integração com AWS S3, endpoints via API Gateway e processamento com AWS Lambda.",
+          "url": "https://app.rocketseat.com.br/certificates/daeb4dcd-6c86-4724-bcab-c95cc59b7467"
+        },
+        {
+          "issuer": "Udemy",
+          "title": "DevOps: Automação",
+          "description": "Docker, Terraform, Ansible, Kubernetes, CI/CD no Azure e Datadog.",
+          "url": "/certificados/UC-af896751-333a-4e4d-88f9-0cd17f1201d4.pdf"
+        },
+        {
+          "issuer": "Universidade Estácio de Sá · 2024",
+          "title": "Aplicações rápidas em Python",
+          "description": "Python para Cloud, IoT e Big Data.",
+          "url": "/certificados/DESENVOLVIMENTO-R%C3%81PIDO-DE-APLICA%C3%87%C3%95ES-EM-PYTHON-PARA-CLOUD-IOT-E-BIGDATA.pdf"
+        }
+      ]
+    },
+    {
+      "label": "segurança",
+      "color": "red",
+      "items": [
+        {
+          "issuer": "Cisco Networking Academy · 2026",
+          "title": "Introdução à Cibersegurança",
+          "description": "Fundamentos de cibersegurança.",
+          "url": "/certificados/Introduction_to_Cybersecurity_certificate_rafaelsora0-gmail-com_1fd6b00b-b672-49d2-ae9d-d524cf038bfa.pdf"
+        },
+        {
+          "issuer": "Hackers do Bem",
+          "title": "Nivelamento em Cibersegurança",
+          "description": "Trilha de nivelamento em cibersegurança.",
+          "url": "/certificados/Certificado%20-%20Nivelamento.pdf"
+        },
+        {
+          "issuer": "Hackers do Bem",
+          "title": "Básico em Cibersegurança",
+          "description": "Trilha básica em cibersegurança.",
+          "url": "/certificados/Certificado_-_Bsico.pdf"
+        }
+      ]
+    }
+  ],
+  "badges": [
+    {
+      "url": "https://www.credly.com/badges/32e23f0a-30f9-458c-b6c7-92066187d5c8/public_url",
+      "image": "badge/introduction-to-cybersecurity.png",
+      "alt": "Badge Cisco: Introduction to Cybersecurity"
+    },
+    {
+      "url": "https://www.credly.com/badges/2f7ffd06-cfe3-4dc3-8740-72f0a089f808/public_url",
+      "image": "badge/development-and-basic-concepts-of-cloud-computing.png",
+      "alt": "Badge Cisco: Desenvolvimento e conceitos básicos de Cloud Computing"
+    },
+    {
+      "url": "https://ava.hackersdobem.org.br/badges/badge.php?hash=c2161c574b7cdc608cb244633f72c8ac7a035fad",
+      "image": "badge/Nivelamento.png",
+      "alt": "Badge Hackers do Bem: Nivelamento"
+    },
+    {
+      "url": "https://ava.hackersdobem.org.br/badges/badge.php?hash=b8bccbd658c8fe42676b83edfb3af83276d8383d",
+      "image": "badge/Básico.png",
+      "alt": "Badge Hackers do Bem: Básico"
+    }
+  ],
+  "footer": {
+    "title": "Vamos construir algo",
+    "accent": "juntos",
+    "description": "Se você chegou até aqui, já viu como eu penso arquitetura, segurança e entrega. Me chame."
+  }
+}
